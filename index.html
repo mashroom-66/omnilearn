@@ -1,0 +1,2552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OmniLearn — Learn Anything. From Anyone. | BUP MGT-4104 Business Plan Demo</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          colors: {
+            omni: {
+              50: '#f0fdf4',
+              100: '#dcfce7',
+              200: '#bbf7d0',
+              300: '#86efac',
+              400: '#4ade80',
+              500: '#22c55e',
+              600: '#16a34a',
+              700: '#15803d',
+              800: '#166534',
+              900: '#14532d',
+              950: '#052e16',
+            },
+            bkash: '#e2136e',
+            nagad: '#f7941d'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      scroll-behavior: smooth;
+    }
+    .font-display {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    /* Custom Scrollbars */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #94a3b8;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #64748b;
+    }
+
+    /* Mobile Phone Frame Styling (Matches Paper Chapter 3 Dark/Green Screenshots) */
+    .mobile-frame-active {
+      max-width: 430px !important;
+      margin: 1.5rem auto !important;
+      border: 10px solid #16a34a !important;
+      border-radius: 46px !important;
+      background-color: #0a0f0d !important;
+      color: #f8fafc !important;
+      box-shadow: 0 25px 60px -15px rgba(22, 163, 74, 0.45), 0 0 0 4px #052e16 !important;
+      overflow: hidden !important;
+      position: relative;
+    }
+    .mobile-frame-active .desktop-card {
+      background-color: #141c18 !important;
+      border-color: #1f2e26 !important;
+      color: #f1f5f9 !important;
+    }
+    .mobile-frame-active .desktop-subtext {
+      color: #94a3b8 !important;
+    }
+    .mobile-frame-active .desktop-hero {
+      background: linear-gradient(180deg, #0d1f16 0%, #0a0f0d 100%) !important;
+      color: #ffffff !important;
+    }
+    /* Subtle pulse for active speaking ring */
+    @keyframes pulseRing {
+      0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+    }
+    .speaking-ring {
+      animation: pulseRing 2s infinite;
+      border: 2.5px solid #22c55e !important;
+    }
+    /* Audio wave animation */
+    @keyframes soundWave {
+      0%, 100% { height: 6px; }
+      50% { height: 22px; }
+    }
+    .wave-bar {
+      animation: soundWave 0.9s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col">
+
+  <!-- TOP FACULTY PRESENTATION BANNER -->
+  <div class="bg-gradient-to-r from-omni-950 via-omni-900 to-slate-900 text-white text-xs py-2 px-4 border-b border-omni-800/60">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-2">
+        <span class="bg-omni-500 text-omni-950 font-bold px-2 py-0.5 rounded-full text-[11px] uppercase tracking-wider flex items-center gap-1">
+          <i class="fa-solid fa-graduation-cap"></i> BUP MGT-4104
+        </span>
+        <span class="font-medium text-omni-100">
+          Innovation & Entrepreneurship Development — Business Plan Live Prototype
+        </span>
+        <span class="hidden lg:inline text-omni-300/80">| Submitted to: Dr. Mohammad Ali (Asst. Prof., FBS, BUP)</span>
+      </div>
+      <div class="flex items-center gap-3">
+        <button onclick="openHostingModal()" class="bg-white/10 hover:bg-white/20 text-omni-200 px-2.5 py-1 rounded-md transition flex items-center gap-1.5 border border-white/15 cursor-pointer">
+          <i class="fa-solid fa-cloud-arrow-up text-omni-400"></i>
+          <span>48-Hr Free Hosting Guide</span>
+        </button>
+        <button onclick="switchTab('economics')" class="bg-amber-400/20 hover:bg-amber-400/30 text-amber-300 px-2.5 py-1 rounded-md transition flex items-center gap-1.5 border border-amber-400/30 cursor-pointer font-medium">
+          <i class="fa-solid fa-chart-line"></i>
+          <span>Break-Even & Financials (39 Experts)</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN HEADER & NAVIGATION -->
+  <header class="bg-white/95 backdrop-blur-md sticky top-0 z-40 border-b border-slate-200 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="flex items-center justify-between h-16 gap-3">
+        <!-- Brand Logo matching Section 3 screenshot -->
+        <div onclick="switchTab('explore')" class="flex items-center gap-3 cursor-pointer group">
+          <div class="w-10 h-10 rounded-full flex items-center justify-center bg-gradient-to-tr from-sky-500 via-omni-500 to-amber-400 p-0.5 shadow-sm group-hover:scale-105 transition">
+            <div class="w-full h-full bg-white rounded-full flex items-center justify-center">
+              <!-- Multi-color swirl SVG matching paper logo -->
+              <svg class="w-7 h-7" viewBox="0 0 64 64" fill="none">
+                <circle cx="32" cy="32" r="24" stroke="#0ea5e9" stroke-width="5" stroke-dasharray="45 110" stroke-linecap="round"/>
+                <circle cx="32" cy="32" r="24" stroke="#16a34a" stroke-width="5" stroke-dasharray="55 100" stroke-dashoffset="-45" stroke-linecap="round"/>
+                <circle cx="32" cy="32" r="24" stroke="#eab308" stroke-width="5" stroke-dasharray="45 110" stroke-dashoffset="-100" stroke-linecap="round"/>
+                <circle cx="32" cy="32" r="14" stroke="#15803d" stroke-width="3.5" stroke-dasharray="40 60" stroke-linecap="round"/>
+              </svg>
+            </div>
+          </div>
+          <div>
+            <div class="text-xl font-extrabold tracking-tight font-display leading-none">
+              <span class="text-slate-900">Omni</span><span class="text-omni-600">Learn</span>
+            </div>
+            <div class="text-[10px] text-slate-500 font-medium tracking-wide mt-0.5">
+              Learn Anything. From Anyone.
+            </div>
+          </div>
+        </div>
+
+        <!-- View Mode Toggle (Web Layout vs Paper's Dark/Green Mobile Frame) -->
+        <div class="flex items-center gap-2">
+          <div class="bg-slate-100 p-1 rounded-xl flex items-center border border-slate-200 text-xs font-semibold">
+            <button id="btnDesktopMode" onclick="setViewportMode('desktop')" class="px-3 py-1.5 rounded-lg bg-white text-slate-900 shadow-sm flex items-center gap-1.5 transition cursor-pointer">
+              <i class="fa-solid fa-desktop text-omni-600"></i>
+              <span class="hidden sm:inline">Web Marketplace</span>
+            </button>
+            <button id="btnMobileMode" onclick="setViewportMode('mobile')" class="px-3 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 flex items-center gap-1.5 transition cursor-pointer">
+              <i class="fa-solid fa-mobile-screen-button text-omni-500"></i>
+              <span class="hidden sm:inline">Mobile App Frame</span>
+            </button>
+          </div>
+
+          <!-- Active User Wallet / Status Pill -->
+          <div onclick="switchTab('messages')" class="hidden md:flex items-center gap-2 bg-omni-50 hover:bg-omni-100 border border-omni-200 px-3 py-1.5 rounded-xl cursor-pointer transition">
+            <span class="w-2 h-2 rounded-full bg-omni-500 animate-pulse"></span>
+            <div class="text-xs">
+              <div class="font-bold text-omni-900">Learner Access: FREE</div>
+              <div class="text-[10px] text-omni-700">bKash / Nagad Verified</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6 Navigation Tabs -->
+      <nav class="flex items-center gap-1 overflow-x-auto py-2 no-scrollbar border-t border-slate-100 text-xs sm:text-sm font-semibold">
+        <button id="tabBtn-explore" onclick="switchTab('explore')" class="nav-tab-btn px-3.5 py-2 rounded-xl whitespace-nowrap flex items-center gap-2 bg-omni-600 text-white shadow-sm transition cursor-pointer">
+          <i class="fa-solid fa-compass"></i>
+          <span>1. Explore Marketplace</span>
+        </button>
+        <button id="tabBtn-group" onclick="switchTab('group')" class="nav-tab-btn px-3.5 py-2 rounded-xl whitespace-nowrap flex items-center gap-2 text-slate-600 hover:bg-slate-100 transition cursor-pointer">
+          <i class="fa-solid fa-users-rays"></i>
+          <span>2. Group Learning Pool</span>
+          <span id="poolCountBadge" class="bg-omni-100 text-omni-800 text-[11px] px-1.5 py-0.2 rounded-full font-bold">4</span>
+        </button>
+        <button id="tabBtn-classroom" onclick="switchTab('classroom')" class="nav-tab-btn px-3.5 py-2 rounded-xl whitespace-nowrap flex items-center gap-2 text-slate-600 hover:bg-slate-100 transition cursor-pointer">
+          <i class="fa-solid fa-video text-rose-500"></i>
+          <span>3. Live Classroom Demo</span>
+          <span class="bg-rose-100 text-rose-700 text-[10px] px-1.5 py-0.2 rounded-full font-bold uppercase">Live</span>
+        </button>
+        <button id="tabBtn-messages" onclick="switchTab('messages')" class="nav-tab-btn px-3.5 py-2 rounded-xl whitespace-nowrap flex items-center gap-2 text-slate-600 hover:bg-slate-100 transition cursor-pointer">
+          <i class="fa-solid fa-comments"></i>
+          <span>4. Messages & bKash Checkout</span>
+        </button>
+        <button id="tabBtn-expert" onclick="switchTab('expert')" class="nav-tab-btn px-3.5 py-2 rounded-xl whitespace-nowrap flex items-center gap-2 text-slate-600 hover:bg-slate-100 transition cursor-pointer">
+          <i class="fa-solid fa-user-check"></i>
+          <span>5. Expert Portal & Pricing</span>
+        </button>
+        <button id="tabBtn-economics" onclick="switchTab('economics')" class="nav-tab-btn px-3.5 py-2 rounded-xl whitespace-nowrap flex items-center gap-2 text-slate-600 hover:bg-slate-100 transition cursor-pointer">
+          <i class="fa-solid fa-chart-pie text-amber-600"></i>
+          <span>6. Business Economics (Faculty View)</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- VIEWPORT WRAPPER (Transforms into Dark/Emerald iPhone Frame when Mobile Mode is toggled) -->
+  <div id="viewportContainer" class="flex-1 transition-all duration-300">
+    <!-- Mobile Status Bar (Only visible in Mobile App Frame mode) -->
+    <div id="mobileStatusBar" class="hidden bg-black text-white px-6 pt-3 pb-2 border-b border-omni-900/60">
+      <div class="flex items-center justify-between text-xs font-semibold">
+        <span>9:41</span>
+        <div class="w-24 h-4 bg-zinc-900 rounded-full border border-zinc-800 flex items-center justify-center">
+          <span class="w-2 h-2 rounded-full bg-omni-500 mr-2"></span>
+        </div>
+        <div class="flex items-center gap-1.5 text-[11px]">
+          <i class="fa-solid fa-signal"></i>
+          <i class="fa-solid fa-wifi"></i>
+          <i class="fa-solid fa-battery-full text-omni-400"></i>
+        </div>
+      </div>
+      <div class="flex items-center justify-between mt-3">
+        <button onclick="switchTab('explore')" class="text-slate-300 hover:text-white"><i class="fa-solid fa-chevron-left"></i></button>
+        <span class="font-display font-bold text-sm tracking-wide text-white">OmniLearn</span>
+        <button onclick="openHostingModal()" class="text-slate-300 hover:text-white"><i class="fa-solid fa-ellipsis"></i></button>
+      </div>
+    </div>
+
+    <!-- =================================================================== -->
+    <!-- TAB 1: EXPLORE MARKETPLACE (Matches Section 6.4.1 & 3.3.2 Mockups)  -->
+    <!-- =================================================================== -->
+    <main id="view-explore" class="tab-view max-w-7xl mx-auto px-4 sm:px-6 py-6 space-y-10">
+
+      <!-- HERO SECTION (Exact copy & layout from Section 6.4.1 mockup) -->
+      <section class="desktop-hero relative rounded-3xl bg-gradient-to-b from-omni-50/90 via-white to-omni-50/40 border border-omni-100 p-6 sm:p-10 text-center shadow-sm overflow-hidden">
+        <div class="max-w-3xl mx-auto space-y-4 relative z-10">
+          <div class="inline-flex items-center gap-2 bg-omni-100 text-omni-800 text-xs font-bold px-3 py-1 rounded-full border border-omni-200">
+            <i class="fa-solid fa-bolt text-omni-600"></i>
+            <span>On-Demand Micro-Learning & Verified Expert Marketplace in Bangladesh</span>
+          </div>
+          <h1 class="text-3xl sm:text-5xl font-extrabold font-display tracking-tight text-slate-900 leading-tight desktop-title">
+            Learn Smarter, Not Longer:<br class="hidden sm:inline" />
+            <span class="text-omni-600">Master New Skills in Minutes.</span>
+          </h1>
+          <p class="text-slate-600 desktop-subtext text-sm sm:text-base max-w-2xl mx-auto">
+            Explore concise, bite-sized micro-learning with top verified experts. Skip rigid 6-month pre-recorded courses—book targeted 1-on-1 troubleshooting or split costs with peers in a Group Learning Pool.
+          </p>
+
+          <!-- Search & Filter Bar (Matches Section 6.4.1 search pill) -->
+          <div class="mt-6 bg-white desktop-card p-2 rounded-2xl shadow-lg border border-omni-200/80 max-w-2xl mx-auto flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
+            <div class="flex items-center gap-2.5 flex-1 px-3 py-1.5">
+              <i class="fa-solid fa-magnifying-glass text-omni-600"></i>
+              <input
+                id="marketSearchInput"
+                oninput="filterExperts()"
+                type="text"
+                placeholder="Search 'Next.js database connections', 'Guitar', 'SEO', 'Finance'..."
+                class="w-full text-sm bg-transparent focus:outline-none text-slate-800 placeholder-slate-400"
+              />
+            </div>
+            <div class="flex items-center gap-2 px-2 sm:px-0">
+              <select id="ratingFilter" onchange="filterExperts()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold px-3 py-2.5 rounded-xl border border-slate-200 focus:outline-none cursor-pointer">
+                <option value="0">All Ratings</option>
+                <option value="4.8">4.8+ ★ Top Rated</option>
+                <option value="4.5">4.5+ ★ Vetted</option>
+              </select>
+              <button onclick="filterExperts()" class="bg-omni-700 hover:bg-omni-800 text-white font-semibold text-sm px-5 py-2.5 rounded-xl shadow-sm transition cursor-pointer">
+                Search
+              </button>
+            </div>
+          </div>
+
+          <!-- Quick Filter Pills -->
+          <div class="flex flex-wrap items-center justify-center gap-2 pt-2 text-xs">
+            <span class="text-slate-400 font-medium">Popular Micro-Topics:</span>
+            <button onclick="quickSearch('React')" class="px-2.5 py-1 rounded-full bg-white border border-slate-200 hover:border-omni-500 text-slate-700 transition cursor-pointer">Next.js & React API</button>
+            <button onclick="quickSearch('Guitar')" class="px-2.5 py-1 rounded-full bg-white border border-slate-200 hover:border-omni-500 text-slate-700 transition cursor-pointer">Guitar: "Majhe Majhe Shunte Pai"</button>
+            <button onclick="quickSearch('SEO')" class="px-2.5 py-1 rounded-full bg-white border border-slate-200 hover:border-omni-500 text-slate-700 transition cursor-pointer">SEO & Digital Marketing</button>
+            <button onclick="quickSearch('Finance')" class="px-2.5 py-1 rounded-full bg-white border border-slate-200 hover:border-omni-500 text-slate-700 transition cursor-pointer">Accounting & Ratio Analysis</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- EXPLORE MICRO-LEARNING CATEGORIES (Matches Section 6.4.1 6-icon strip) -->
+      <section class="space-y-4">
+        <div class="flex items-center justify-between">
+          <h2 class="text-sm font-extrabold uppercase tracking-wider text-slate-700 desktop-subtext">
+            Explore Micro-Learning Categories
+          </h2>
+          <button onclick="selectCategory('All')" id="resetCatBtn" class="text-xs font-bold text-omni-600 hover:underline cursor-pointer">
+            Show All Categories (6)
+          </button>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3" id="categoryGrid">
+          <!-- Rendered dynamically by JS -->
+        </div>
+      </section>
+
+      <!-- MEET FEATURED EXPERTS (Matches Section 6.4.1 Expert Cards + 3.3.2 Profiles) -->
+      <section class="space-y-4">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <div>
+            <h2 class="text-lg font-extrabold font-display text-slate-900 desktop-title flex items-center gap-2">
+              <span>MEET FEATURED VERIFIED EXPERTS</span>
+              <span class="bg-sky-100 text-sky-700 text-xs px-2.5 py-0.5 rounded-full font-bold flex items-center gap-1">
+                <i class="fa-solid fa-circle-check"></i> 100% Vetted Credentials & Portfolios
+              </span>
+            </h2>
+            <p class="text-xs text-slate-500 desktop-subtext">Click any expert to inspect their Qualifications, Intro Video, Portfolio, or Book a 1-on-1 Session.</p>
+          </div>
+          <div class="flex items-center gap-3 text-xs">
+            <label class="flex items-center gap-1.5 font-semibold text-slate-600 desktop-subtext">
+              <span>Max Session Fee:</span>
+              <input id="priceRangeSlider" type="range" min="500" max="1500" step="100" value="1500" oninput="updatePriceFilter(this.value)" class="accent-omni-600 cursor-pointer" />
+              <span id="priceRangeLabel" class="font-bold text-omni-700">BDT 1,500</span>
+            </label>
+          </div>
+        </div>
+
+        <div id="expertsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <!-- Populated by JS -->
+        </div>
+      </section>
+
+      <!-- UPCOMING MICRO-LEARNING SESSIONS (Matches Section 6.4.1 Mockup) -->
+      <section class="space-y-4">
+        <div class="flex items-center justify-between">
+          <div>
+            <h2 class="text-lg font-extrabold font-display text-slate-900 desktop-title">
+              UPCOMING MICRO-LEARNING SESSIONS
+            </h2>
+            <p class="text-xs text-slate-500 desktop-subtext">Join live bite-sized group sessions or launch the interactive classroom demo.</p>
+          </div>
+          <button onclick="switchTab('classroom')" class="text-xs font-bold text-omni-700 hover:text-omni-800 flex items-center gap-1 cursor-pointer">
+            <span>Open Live Classroom</span> <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <!-- Card 1: Advanced React & Next.js -->
+          <div class="desktop-card bg-white rounded-2xl border-2 border-omni-500 shadow-sm overflow-hidden flex flex-col justify-between">
+            <div class="relative h-40 bg-gradient-to-br from-slate-800 via-slate-900 to-omni-950 p-4 flex flex-col justify-between">
+              <div class="flex items-center justify-between">
+                <span class="bg-omni-500 text-omni-950 text-[10px] font-extrabold px-2.5 py-0.5 rounded-full uppercase">Live Group Demo</span>
+                <span class="bg-black/50 text-white text-xs font-bold px-2.5 py-0.5 rounded-lg">BDT 400 / seat</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" onerror="this.src='https://placehold.co/100x100/16a34a/ffffff?text=RK'" alt="Tutor Rahim" class="w-12 h-12 rounded-xl object-cover border-2 border-omni-400" />
+                <div>
+                  <span class="bg-black/70 text-white text-[11px] font-semibold px-2 py-0.5 rounded">Tutor Rahim</span>
+                  <h3 class="text-white font-bold text-base mt-0.5">Advanced React & Next.js</h3>
+                </div>
+              </div>
+            </div>
+            <div class="p-4 flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <span class="text-xs text-slate-600 desktop-subtext font-medium"><i class="fa-solid fa-users text-omni-600 mr-1"></i> 6 Students Joined</span>
+              </div>
+              <button onclick="openClassroomMode('group')" class="bg-omni-700 hover:bg-omni-800 text-white text-xs font-bold px-4 py-2 rounded-full transition cursor-pointer">
+                Join Live Demo
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 2: SEO Fundamentals -->
+          <div class="desktop-card bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col justify-between">
+            <div class="relative h-40 bg-gradient-to-br from-sky-50 to-indigo-100 p-4 flex flex-col justify-between">
+              <div class="flex items-center justify-between">
+                <span class="bg-sky-600 text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase">Marketing</span>
+                <span class="bg-white/90 text-slate-800 text-xs font-bold px-2.5 py-0.5 rounded-lg">BDT 250 / seat</span>
+              </div>
+              <div class="flex items-center justify-center my-1">
+                <div class="px-4 py-2 rounded-xl bg-white/90 border border-sky-300 shadow-sm text-sky-900 font-extrabold tracking-widest text-lg flex items-center gap-2">
+                  <i class="fa-solid fa-magnifying-glass-chart text-sky-600"></i> SEO RANKING
+                </div>
+              </div>
+              <h3 class="text-slate-900 font-bold text-base">SEO Fundamentals & Local Ranking</h3>
+            </div>
+            <div class="p-4 flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=120&q=80" onerror="this.src='https://placehold.co/80x80/0284c7/ffffff?text=NA'" class="w-6 h-6 rounded-full object-cover" alt="Nila" />
+                <span class="text-xs font-semibold text-slate-700 desktop-subtext">Nila Ahmed</span>
+              </div>
+              <button onclick="startBooking(2)" class="bg-omni-700 hover:bg-omni-800 text-white text-xs font-bold px-4 py-2 rounded-full transition cursor-pointer">
+                Connect Now
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 3: Guitar 1-on-1 Session -->
+          <div class="desktop-card bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col justify-between">
+            <div class="relative h-40 bg-gradient-to-br from-amber-900 via-stone-900 to-black p-4 flex flex-col justify-between">
+              <div class="flex items-center justify-between">
+                <span class="bg-amber-400 text-stone-950 text-[10px] font-extrabold px-2.5 py-0.5 rounded-full uppercase">1-on-1 Music Demo</span>
+                <span class="bg-black/60 text-white text-xs font-bold px-2.5 py-0.5 rounded-lg">BDT 500 / 1-on-1</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-xl bg-amber-500/20 border border-amber-400/40 flex items-center justify-center text-2xl">
+                  🎸
+                </div>
+                <div>
+                  <span class="text-amber-300 text-[11px] font-semibold">Arifuzzaman • Bangla Folk</span>
+                  <h3 class="text-white font-bold text-sm leading-snug">Guitar: Learning "Majhe Majhe Shunte Pai"</h3>
+                </div>
+              </div>
+            </div>
+            <div class="p-4 flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <span class="text-xs text-slate-600 desktop-subtext font-medium"><i class="fa-solid fa-guitar text-amber-600 mr-1"></i> Chords C, G, Am</span>
+              </div>
+              <button onclick="openClassroomMode('oneOnOne')" class="bg-omni-700 hover:bg-omni-800 text-white text-xs font-bold px-4 py-2 rounded-full transition cursor-pointer">
+                Launch 1-on-1 Demo
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- HOW OMNILEARN WORKS (Exact 4 steps from Section 6.4.1 & Value Chain Chapter 8.1) -->
+      <section class="desktop-card bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-sm">
+        <div class="text-center max-w-xl mx-auto mb-6">
+          <h2 class="text-lg font-extrabold font-display text-slate-900 desktop-title uppercase tracking-wide">
+            HOW OMNILEARN WORKS
+          </h2>
+          <p class="text-xs text-slate-500 desktop-subtext mt-1">
+            Bridging the gap between static pre-recorded video courses and unverified informal tutoring.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="text-center p-4 rounded-2xl bg-omni-50/50 desktop-card border border-omni-100">
+            <div class="w-14 h-14 mx-auto rounded-2xl bg-omni-100 text-omni-700 flex items-center justify-center text-2xl mb-3 shadow-sm">
+              <i class="fa-solid fa-magnifying-glass-plus"></i>
+            </div>
+            <h3 class="font-bold text-sm text-slate-900 desktop-title">1. Find Experts</h3>
+            <p class="text-xs text-slate-500 desktop-subtext mt-1">
+              Search verified experts by specific micro-topic, inspect portfolios, watch intro videos, or post a Group Learning Request.
+            </p>
+          </div>
+
+          <div class="text-center p-4 rounded-2xl bg-omni-50/50 desktop-card border border-omni-100">
+            <div class="w-14 h-14 mx-auto rounded-2xl bg-omni-100 text-omni-700 flex items-center justify-center text-2xl mb-3 shadow-sm">
+              <i class="fa-solid fa-calendar-check"></i>
+            </div>
+            <h3 class="font-bold text-sm text-slate-900 desktop-title">2. Book Session</h3>
+            <p class="text-xs text-slate-500 desktop-subtext mt-1">
+              Chat directly to agree on scope & timing. Pay securely via bKash or Nagad (1-on-1 or split cost in a group pool).
+            </p>
+          </div>
+
+          <div class="text-center p-4 rounded-2xl bg-omni-50/50 desktop-card border border-omni-100">
+            <div class="w-14 h-14 mx-auto rounded-2xl bg-omni-100 text-omni-700 flex items-center justify-center text-2xl mb-3 shadow-sm">
+              <i class="fa-solid fa-laptop-code"></i>
+            </div>
+            <h3 class="font-bold text-sm text-slate-900 desktop-title">3. Learn Directly</h3>
+            <p class="text-xs text-slate-500 desktop-subtext mt-1">
+              Join an interactive live video session with screen-sharing, real-time Q&A, and targeted problem troubleshooting.
+            </p>
+          </div>
+
+          <div class="text-center p-4 rounded-2xl bg-omni-50/50 desktop-card border border-omni-100">
+            <div class="w-14 h-14 mx-auto rounded-2xl bg-omni-100 text-omni-700 flex items-center justify-center text-2xl mb-3 shadow-sm">
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <h3 class="font-bold text-sm text-slate-900 desktop-title">4. Rate & Share</h3>
+            <p class="text-xs text-slate-500 desktop-subtext mt-1">
+              Evaluate teaching quality, subject mastery, and punctuality to strengthen marketplace trust across Bangladesh.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- =================================================================== -->
+    <!-- TAB 2: GROUP LEARNING POOL & REQUESTS (Matches Section 3.3.2)        -->
+    <!-- =================================================================== -->
+    <main id="view-group" class="tab-view hidden max-w-7xl mx-auto px-4 sm:px-6 py-6 space-y-8">
+      <!-- Header Banner -->
+      <div class="bg-gradient-to-r from-omni-900 via-omni-800 to-slate-900 rounded-3xl p-6 sm:p-8 text-white shadow-md">
+        <div class="max-w-3xl space-y-2">
+          <span class="bg-omni-400/20 text-omni-300 border border-omni-400/30 text-xs font-bold px-3 py-1 rounded-full uppercase">
+            <i class="fa-solid fa-people-group mr-1"></i> Collaborative Cost-Sharing Model (Section 1.3 & 3.3.2)
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold font-display">
+            Group Learning Requests: Pool Interest & Split the Session Fee
+          </h2>
+          <p class="text-omni-100 text-sm leading-relaxed">
+            Can't afford a premium expert alone? Publish what you want to learn, let peers with the same requirement join your request, and divide the expert's session fee equally among participants.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+        <!-- LEFT COLUMN: Publish a Learning Request (Matches Dark-Mode Screenshot in Section 3.3.2) -->
+        <div class="lg:col-span-5 bg-zinc-950 text-white rounded-3xl p-6 border-2 border-omni-500 shadow-xl space-y-5">
+          <div class="flex items-center justify-between border-b border-zinc-800 pb-3">
+            <div>
+              <span class="text-[11px] font-bold uppercase tracking-wider text-omni-400">Section 3.3.2 Feature</span>
+              <h3 class="text-xl font-extrabold font-display">Learning Request</h3>
+            </div>
+            <span class="bg-omni-500/20 text-omni-400 text-xs px-2.5 py-1 rounded-full font-bold border border-omni-500/30">
+              Free to Post
+            </span>
+          </div>
+
+          <form onsubmit="createLearningRequest(event)" class="space-y-4 text-sm">
+            <div>
+              <label class="block text-[11px] font-bold uppercase tracking-wider text-zinc-400 mb-1">
+                CATEGORY
+              </label>
+              <select id="reqCategory" class="w-full bg-zinc-900 border border-omni-500/60 rounded-xl px-3.5 py-2.5 text-omni-400 font-semibold focus:outline-none">
+                <option value="Programming & Tech → Advanced React">Programming & Tech → Advanced React</option>
+                <option value="Business & Finance → Financial Ratios">Business & Finance → Financial Ratios</option>
+                <option value="Digital Marketing → Technical SEO">Digital Marketing → Technical SEO</option>
+                <option value="Music & Arts → Acoustic Guitar">Music & Arts → Acoustic Guitar</option>
+                <option value="Design → Figma UI Design Systems">Design → Figma UI Design Systems</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-[11px] font-bold uppercase tracking-wider text-zinc-400 mb-1">
+                SPECIFIC NEEDS (MICRO-TOPIC)
+              </label>
+              <input
+                id="reqTopic"
+                type="text"
+                required
+                value="Vercel vs AWS deployment for production?"
+                placeholder="Describe the exact problem or skill you want to learn..."
+                class="w-full bg-zinc-900 border border-zinc-700 focus:border-omni-500 rounded-xl px-3.5 py-2.5 text-white focus:outline-none"
+              />
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="block text-[11px] font-bold uppercase tracking-wider text-zinc-400 mb-1">
+                  TOTAL SESSION BUDGET (BDT)
+                </label>
+                <input
+                  id="reqBudget"
+                  type="number"
+                  min="500"
+                  max="5000"
+                  step="100"
+                  value="1600"
+                  class="w-full bg-zinc-900 border border-zinc-700 focus:border-omni-500 rounded-xl px-3.5 py-2.5 text-white font-bold focus:outline-none"
+                />
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold uppercase tracking-wider text-zinc-400 mb-1">
+                  TARGET GROUP SIZE
+                </label>
+                <select id="reqGroupSize" class="w-full bg-zinc-900 border border-zinc-700 focus:border-omni-500 rounded-xl px-3.5 py-2.5 text-white font-bold focus:outline-none">
+                  <option value="3">3 Learners</option>
+                  <option value="4" selected>4 Learners</option>
+                  <option value="5">5 Learners</option>
+                  <option value="6">6 Learners</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Matched Experts Preview (Exact match to Section 3.3.2 screenshot) -->
+            <div class="pt-1">
+              <label class="block text-[11px] font-bold uppercase tracking-wider text-zinc-400 mb-2">
+                MATCHED VERIFIED EXPERTS
+              </label>
+              <div class="space-y-2">
+                <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 flex items-center justify-between">
+                  <div class="flex items-center gap-2.5">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80" onerror="this.src='https://placehold.co/80x80/16a34a/ffffff?text=RK'" class="w-9 h-9 rounded-full object-cover" alt="Rahim" />
+                    <div>
+                      <div class="font-bold text-xs text-white">Rahim Khan</div>
+                      <div class="text-amber-400 text-[11px]">★★★★★</div>
+                    </div>
+                  </div>
+                  <span class="text-omni-400 font-bold text-xs">4.9</span>
+                </div>
+                <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 flex items-center justify-between">
+                  <div class="flex items-center gap-2.5">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80" onerror="this.src='https://placehold.co/80x80/16a34a/ffffff?text=SR'" class="w-9 h-9 rounded-full object-cover" alt="Shakib" />
+                    <div>
+                      <div class="font-bold text-xs text-white">Shakib Rahman</div>
+                      <div class="text-amber-400 text-[11px]">★★★★★</div>
+                    </div>
+                  </div>
+                  <span class="text-omni-400 font-bold text-xs">4.7</span>
+                </div>
+              </div>
+            </div>
+
+            <button type="submit" class="w-full bg-omni-500 hover:bg-omni-400 text-zinc-950 font-extrabold py-3 rounded-full shadow-lg transition uppercase tracking-wide text-xs cursor-pointer">
+              CONNECT WITH OTHERS (Pool Interest)
+            </button>
+          </form>
+        </div>
+
+        <!-- RIGHT COLUMN: Active Group Learning Pools (Interactive Cost-Splitter) -->
+        <div class="lg:col-span-7 space-y-4">
+          <div class="flex items-center justify-between">
+            <div>
+              <h3 class="text-lg font-extrabold font-display text-slate-900 desktop-title">
+                Active Student Learning Pools (Click to Join & Split Fee)
+              </h3>
+              <p class="text-xs text-slate-500 desktop-subtext">
+                Watch how each student's fee drops automatically as more learners join the pool!
+              </p>
+            </div>
+          </div>
+
+          <div id="groupPoolsContainer" class="space-y-4">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- =================================================================== -->
+    <!-- TAB 3: LIVE CLASSROOM DEMO (Matches Both Screenshots in Sec 3.3.1)   -->
+    <!-- =================================================================== -->
+    <main id="view-classroom" class="tab-view hidden max-w-6xl mx-auto px-4 sm:px-6 py-6 space-y-6">
+      <!-- Top Switcher between the 2 exact screenshots in Section 3.3.1 -->
+      <div class="flex flex-wrap items-center justify-between gap-4 bg-white desktop-card p-4 rounded-2xl border border-slate-200 shadow-sm">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-omni-600">Section 3.3.1 Product Demo</span>
+          <h2 class="text-lg font-extrabold font-display text-slate-900 desktop-title">
+            Interactive Live Video & Chat Classroom
+          </h2>
+        </div>
+        <div class="flex items-center gap-2 bg-slate-100 p-1.5 rounded-xl border border-slate-200">
+          <button id="btnClassGroup" onclick="openClassroomMode('group')" class="px-4 py-2 rounded-lg text-xs font-bold bg-omni-600 text-white shadow-sm transition cursor-pointer flex items-center gap-1.5">
+            <i class="fa-solid fa-users"></i>
+            <span>Mode A: Group React & Next.js Session</span>
+          </button>
+          <button id="btnClassOneOnOne" onclick="openClassroomMode('oneOnOne')" class="px-4 py-2 rounded-lg text-xs font-bold text-slate-700 hover:bg-white transition cursor-pointer flex items-center gap-1.5">
+            <i class="fa-solid fa-guitar"></i>
+            <span>Mode B: 1-on-1 Guitar Session</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- CLASSROOM INTERFACE (Matches the Dark-Mode Emerald Green iPhone UI from Section 3.3.1) -->
+      <div class="bg-zinc-950 text-white rounded-3xl border-4 border-omni-500 shadow-2xl overflow-hidden max-w-3xl mx-auto">
+        <!-- Classroom Top Bar -->
+        <div class="px-5 py-4 border-b border-zinc-800 flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <div id="classroomIcon" class="w-10 h-10 rounded-xl bg-omni-500/20 border border-omni-500/40 flex items-center justify-center text-omni-400 text-lg">
+              <i class="fa-solid fa-people-group"></i>
+            </div>
+            <div>
+              <div class="text-xs text-omni-400 font-bold uppercase tracking-wider flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-rose-500 animate-ping"></span>
+                <span id="classroomModeBadge">LIVE GROUP COLLABORATIVE SESSION</span>
+              </div>
+              <h3 id="classroomTitle" class="font-display font-extrabold text-base sm:text-lg text-white">
+                Group: Advanced React & Next.js Collaborative Session
+              </h3>
+            </div>
+          </div>
+          <div class="flex items-center gap-2">
+            <span id="sessionTimer" class="bg-zinc-900 border border-zinc-700 text-omni-400 font-mono text-xs px-3 py-1.5 rounded-lg">
+              24:18
+            </span>
+          </div>
+        </div>
+
+        <!-- VIDEO STAGE: GROUP MODE (Tutor Rahim + 6 Students: Shakib, Nila, Maria, Tania, Asif, Sumona) -->
+        <div id="stageGroup" class="p-4 sm:p-5 space-y-3 bg-zinc-950">
+          <div class="grid grid-cols-12 gap-2.5">
+            <!-- Main Tutor Tile: Tutor Rahim -->
+            <div class="col-span-12 sm:col-span-6 row-span-2 relative rounded-2xl overflow-hidden bg-zinc-900 speaking-ring min-h-[210px]">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" onerror="this.src='https://placehold.co/400x300/14532d/ffffff?text=Tutor+Rahim'" class="w-full h-full object-cover opacity-90" alt="Tutor Rahim" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+              <div class="absolute top-2.5 left-2.5 bg-omni-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-md">
+                Verified Expert • Host
+              </div>
+              <div class="absolute bottom-2.5 left-2.5 right-2.5 flex items-center justify-between">
+                <span class="bg-black/75 text-white text-xs font-bold px-2.5 py-1 rounded-lg">Tutor Rahim</span>
+                <span class="w-7 h-7 rounded-full bg-omni-500 text-zinc-950 flex items-center justify-center text-xs">
+                  <i class="fa-solid fa-microphone"></i>
+                </span>
+              </div>
+            </div>
+
+            <!-- Shakib -->
+            <div class="col-span-4 sm:col-span-3 relative rounded-xl overflow-hidden bg-zinc-900 border border-zinc-800 h-28">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80" onerror="this.src='https://placehold.co/200x200/1e293b/ffffff?text=Shakib'" class="w-full h-full object-cover" alt="Shakib" />
+              <span class="absolute bottom-1.5 left-1.5 bg-black/75 text-white text-[10px] font-semibold px-2 py-0.5 rounded">Shakib</span>
+              <span class="absolute bottom-1.5 right-1.5 w-5 h-5 rounded-full bg-black/70 text-white flex items-center justify-center text-[9px]"><i class="fa-solid fa-microphone"></i></span>
+            </div>
+
+            <!-- Nila -->
+            <div class="col-span-4 sm:col-span-3 relative rounded-xl overflow-hidden bg-zinc-900 border border-zinc-800 h-28">
+              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80" onerror="this.src='https://placehold.co/200x200/1e293b/ffffff?text=Nila'" class="w-full h-full object-cover" alt="Nila" />
+              <span class="absolute bottom-1.5 left-1.5 bg-black/75 text-white text-[10px] font-semibold px-2 py-0.5 rounded">Nila</span>
+              <span class="absolute bottom-1.5 right-1.5 w-5 h-5 rounded-full bg-black/70 text-white flex items-center justify-center text-[9px]"><i class="fa-solid fa-microphone"></i></span>
+            </div>
+
+            <!-- Maria -->
+            <div class="col-span-4 sm:col-span-6 relative rounded-xl overflow-hidden bg-zinc-900 border border-zinc-800 h-28">
+              <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=300&q=80" onerror="this.src='https://placehold.co/200x200/1e293b/ffffff?text=Maria'" class="w-full h-full object-cover" alt="Maria" />
+              <span class="absolute bottom-1.5 left-1.5 bg-black/75 text-white text-[10px] font-semibold px-2 py-0.5 rounded">Maria</span>
+              <span class="absolute bottom-1.5 right-1.5 w-5 h-5 rounded-full bg-black/70 text-white flex items-center justify-center text-[9px]"><i class="fa-solid fa-microphone"></i></span>
+            </div>
+
+            <!-- Bottom Row: Tania, Asif, Sumona -->
+            <div class="col-span-4 relative rounded-xl overflow-hidden bg-zinc-900 border border-zinc-800 h-28">
+              <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=300&q=80" onerror="this.src='https://placehold.co/200x200/1e293b/ffffff?text=Tania'" class="w-full h-full object-cover" alt="Tania" />
+              <span class="absolute bottom-1.5 left-1.5 bg-black/75 text-white text-[10px] font-semibold px-2 py-0.5 rounded">Tania</span>
+              <span class="absolute bottom-1.5 right-1.5 w-5 h-5 rounded-full bg-black/70 text-white flex items-center justify-center text-[9px]"><i class="fa-solid fa-microphone"></i></span>
+            </div>
+
+            <div class="col-span-4 relative rounded-xl overflow-hidden bg-zinc-900 border border-zinc-800 h-28">
+              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80" onerror="this.src='https://placehold.co/200x200/1e293b/ffffff?text=Asif'" class="w-full h-full object-cover" alt="Asif" />
+              <span class="absolute bottom-1.5 left-1.5 bg-black/75 text-white text-[10px] font-semibold px-2 py-0.5 rounded">Asif</span>
+              <span class="absolute bottom-1.5 right-1.5 w-5 h-5 rounded-full bg-black/70 text-white flex items-center justify-center text-[9px]"><i class="fa-solid fa-microphone"></i></span>
+            </div>
+
+            <div class="col-span-4 relative rounded-xl overflow-hidden bg-zinc-900 border border-zinc-800 h-28">
+              <img src="https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?auto=format&fit=crop&w=300&q=80" onerror="this.src='https://placehold.co/200x200/1e293b/ffffff?text=Sumona'" class="w-full h-full object-cover" alt="Sumona" />
+              <span class="absolute bottom-1.5 left-1.5 bg-black/75 text-white text-[10px] font-semibold px-2 py-0.5 rounded">Sumona</span>
+              <span class="absolute bottom-1.5 right-1.5 w-5 h-5 rounded-full bg-black/70 text-white flex items-center justify-center text-[9px]"><i class="fa-solid fa-microphone"></i></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- VIDEO STAGE: ONE-ON-ONE GUITAR MODE (Matches Section 3.3.1 Guitar Screenshot) -->
+        <div id="stageOneOnOne" class="hidden p-4 sm:p-5 bg-zinc-950">
+          <div class="relative rounded-2xl overflow-hidden border border-zinc-800 h-72 sm:h-80 bg-zinc-900">
+            <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=900&q=80" onerror="this.src='https://placehold.co/700x400/1c1917/ffffff?text=Guitar+1-on-1+Session'" class="w-full h-full object-cover" alt="Guitar Session" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30"></div>
+
+            <!-- Live Chord Progression Overlay -->
+            <div class="absolute top-3 left-3 bg-black/75 backdrop-blur-md border border-omni-500/50 rounded-xl px-3.5 py-2">
+              <div class="text-[10px] text-omni-400 font-bold uppercase">Current Verse Chord Progression</div>
+              <div class="flex items-center gap-2 mt-1 font-mono text-sm font-extrabold">
+                <span class="px-2 py-0.5 rounded bg-omni-500 text-zinc-950">C</span>
+                <span class="text-zinc-400">→</span>
+                <span class="px-2 py-0.5 rounded bg-zinc-800 text-white">G</span>
+                <span class="text-zinc-400">→</span>
+                <span class="px-2 py-0.5 rounded bg-zinc-800 text-white">Am</span>
+                <span class="text-zinc-400">→</span>
+                <span class="px-2 py-0.5 rounded bg-zinc-800 text-white">F</span>
+              </div>
+            </div>
+
+            <!-- Picture-in-Picture Expert Tile (Bottom Right with Green Border, matching paper screenshot) -->
+            <div class="absolute bottom-3 right-3 w-28 h-28 sm:w-32 sm:h-32 rounded-2xl overflow-hidden border-2 border-omni-400 shadow-xl bg-zinc-900">
+              <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=300&q=80" onerror="this.src='https://placehold.co/150x150/16a34a/ffffff?text=Expert'" class="w-full h-full object-cover" alt="Guitar Instructor" />
+              <span class="absolute bottom-1 left-1.5 bg-black/75 text-white text-[10px] font-bold px-1.5 py-0.5 rounded">Arifuzzaman</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CALL CONTROLS BAR (Exact 3 circular buttons from paper screenshot: Mute, Camera, End Call + Rate) -->
+        <div class="py-3 bg-zinc-950 flex items-center justify-center gap-5 border-t border-b border-zinc-900">
+          <button id="btnMuteMic" onclick="toggleMic()" class="w-12 h-12 rounded-full bg-zinc-800 hover:bg-zinc-700 text-white flex items-center justify-center text-lg transition cursor-pointer">
+            <i id="iconMic" class="fa-solid fa-microphone-slash"></i>
+          </button>
+          <button id="btnCam" onclick="toggleCam()" class="w-14 h-14 rounded-full bg-white hover:bg-slate-200 text-zinc-950 flex items-center justify-center text-xl shadow-md transition cursor-pointer">
+            <i id="iconCam" class="fa-solid fa-video"></i>
+          </button>
+          <button onclick="openReviewModal()" title="Finish Session & Leave Review" class="w-12 h-12 rounded-full bg-rose-600 hover:bg-rose-500 text-white flex items-center justify-center text-lg shadow-md transition cursor-pointer">
+            <i class="fa-solid fa-phone-slash"></i>
+          </button>
+        </div>
+
+        <!-- LIVE SESSION CHAT TRANSCRIPT (Matches exact dialogue from Section 3.3.1 screenshots) -->
+        <div class="p-4 sm:p-5 bg-zinc-900/90 space-y-3">
+          <div id="classroomChatFeed" class="space-y-2.5 max-h-60 overflow-y-auto pr-1">
+            <!-- Populated dynamically by JS for Group or 1-on-1 mode -->
+          </div>
+
+          <div id="speakingIndicatorText" class="text-xs text-zinc-400 italic">
+            Tutor Rahim is actively speaking
+          </div>
+
+          <!-- Send Live Message Input (Matches rounded pill input with green 'Send' button) -->
+          <form onsubmit="sendClassroomMessage(event)" class="flex items-center bg-zinc-950 border border-omni-600/70 rounded-full p-1.5 pl-4">
+            <input
+              id="classroomChatInput"
+              type="text"
+              placeholder="Type a message..."
+              class="flex-1 bg-transparent text-sm text-white placeholder-zinc-500 focus:outline-none"
+            />
+            <button type="submit" class="bg-omni-500 hover:bg-omni-400 text-zinc-950 font-bold text-xs px-5 py-2 rounded-full transition cursor-pointer">
+              Send
+            </button>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <!-- =================================================================== -->
+    <!-- TAB 4: DIRECT MESSAGING & bKash / Nagad CHECKOUT (Sec 3.3.2 & 3.3.4)-->
+    <!-- =================================================================== -->
+    <main id="view-messages" class="tab-view hidden max-w-7xl mx-auto px-4 sm:px-6 py-6 space-y-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <!-- LEFT PANEL: Direct Pre-Booking Chat (Matches Section 3.3.2 bottom-right screen) -->
+        <div class="lg:col-span-6 bg-zinc-950 text-white rounded-3xl border-2 border-omni-500 p-5 shadow-xl flex flex-col justify-between space-y-4">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between border-b border-zinc-800 pb-3">
+              <div>
+                <span class="text-[11px] font-bold uppercase tracking-wider text-omni-400">Section 3.3.2 Direct Communication</span>
+                <h3 class="text-lg font-extrabold font-display">Vetted Expert Discovery & Chat</h3>
+              </div>
+              <span class="bg-omni-500/20 text-omni-400 text-[11px] px-2.5 py-1 rounded-full font-bold border border-omni-500/30">
+                4.5+ ★ Vetted
+              </span>
+            </div>
+
+            <!-- Expert Quick Selector List (Shakib, Nila, Sumona, Maria, Rahim) -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-2" id="chatExpertSelector">
+              <!-- Populated by JS -->
+            </div>
+
+            <!-- Anti-Leakage Escrow Protection Banner (From Chapter 12 Shifat Ul Hoque Feedback) -->
+            <div class="bg-omni-950/90 border border-omni-700/60 rounded-xl p-2.5 text-xs text-omni-200 flex items-start gap-2">
+              <i class="fa-solid fa-shield-halved text-omni-400 mt-0.5"></i>
+              <div>
+                <span class="font-bold text-white">OmniLearn Escrow Protection:</span> Keep payments inside OmniLearn via bKash/Nagad for 100% session refund guarantee & verified video classroom access.
+              </div>
+            </div>
+
+            <!-- Chat Thread -->
+            <div id="directChatMessages" class="bg-zinc-900 rounded-2xl p-4 h-64 overflow-y-auto space-y-3 border border-zinc-800">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+
+          <form onsubmit="sendDirectMessage(event)" class="flex items-center bg-zinc-900 border border-omni-500/70 rounded-full p-1.5 pl-4">
+            <input
+              id="directChatInput"
+              type="text"
+              placeholder="Discuss topic, session fee, or schedule..."
+              class="flex-1 bg-transparent text-sm text-white placeholder-zinc-400 focus:outline-none"
+            />
+            <button type="submit" class="bg-omni-500 hover:bg-omni-400 text-zinc-950 font-bold text-xs px-5 py-2 rounded-full transition cursor-pointer">
+              Send
+            </button>
+          </form>
+        </div>
+
+        <!-- RIGHT PANEL: Interactive Booking & bKash / Nagad Checkout + 15% Commission Split -->
+        <div class="lg:col-span-6 desktop-card bg-white rounded-3xl border border-slate-200 p-6 shadow-sm space-y-5">
+          <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+            <div>
+              <span class="text-xs font-bold uppercase tracking-wider text-omni-600">Section 3.3.4 & 6.4.2 Revenue Engine</span>
+              <h3 class="text-xl font-extrabold font-display text-slate-900 desktop-title">
+                Session Booking & Mobile Wallet Checkout
+              </h3>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <span class="px-2.5 py-1 rounded-lg bg-pink-600 text-white font-extrabold text-xs">bKash</span>
+              <span class="px-2.5 py-1 rounded-lg bg-orange-500 text-white font-extrabold text-xs">Nagad</span>
+            </div>
+          </div>
+
+          <div class="space-y-4 text-sm">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs font-bold text-slate-600 desktop-subtext mb-1">Select Verified Expert</label>
+                <select id="bookingExpertSelect" onchange="updateCheckoutCalculation()" class="w-full bg-slate-50 desktop-card border border-slate-300 rounded-xl px-3 py-2.5 font-semibold text-slate-800 focus:outline-none">
+                  <option value="Rahim Khan">Rahim Khan (Next.js & React — 4.9★)</option>
+                  <option value="Nila Ahmed">Nila Ahmed (SEO & Digital Marketing — 4.8★)</option>
+                  <option value="Sumona Islam">Sumona Islam (Finance & Strategy — 4.9★)</option>
+                  <option value="Shakib Rahman">Shakib Rahman (Full Stack UX/Figma — 4.7★)</option>
+                  <option value="Arifuzzaman">Arifuzzaman (Acoustic Guitar — 4.9★)</option>
+                  <option value="Maria Chowdhury">Maria Chowdhury (Filmmaking & DSLR — 4.7★)</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-600 desktop-subtext mb-1">Learning Model</label>
+                <select id="bookingSessionType" onchange="updateCheckoutCalculation()" class="w-full bg-slate-50 desktop-card border border-slate-300 rounded-xl px-3 py-2.5 font-semibold text-slate-800 focus:outline-none">
+                  <option value="1on1">1-on-1 On-Demand Session</option>
+                  <option value="group">Group Learning Pool (Cost-Shared)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs font-bold text-slate-600 desktop-subtext mb-1">Agreed Session Fee (BDT)</label>
+                <input
+                  id="bookingFeeInput"
+                  type="number"
+                  min="200"
+                  max="5000"
+                  step="50"
+                  value="1000"
+                  oninput="updateCheckoutCalculation()"
+                  class="w-full bg-slate-50 desktop-card border border-slate-300 rounded-xl px-3 py-2 font-extrabold text-omni-700 text-base focus:outline-none"
+                />
+                <span class="text-[11px] text-slate-400">Paper average session assumption: BDT 1,000</span>
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-600 desktop-subtext mb-1">Preferred Date & Time</label>
+                <input
+                  type="datetime-local"
+                  value="2026-11-10T19:00"
+                  class="w-full bg-slate-50 desktop-card border border-slate-300 rounded-xl px-3 py-2 text-slate-700 font-medium focus:outline-none"
+                />
+              </div>
+            </div>
+
+            <!-- Transparent Unit Economics Breakdown Box (Matches Chapter 5 & 11) -->
+            <div class="bg-slate-50 desktop-card rounded-2xl p-4 border border-slate-200 space-y-2.5">
+              <div class="text-xs font-extrabold uppercase tracking-wider text-slate-500 border-b border-slate-200 pb-1.5 flex items-center justify-between">
+                <span>OmniLearn Transaction Economics (Section 6.4.2)</span>
+                <span class="text-omni-600">15% Take-Rate</span>
+              </div>
+              <div class="flex justify-between text-xs">
+                <span class="text-slate-600 desktop-subtext">Learner Registration & Platform Access Fee:</span>
+                <span class="font-bold text-omni-600">BDT 0 (FREE)</span>
+              </div>
+              <div class="flex justify-between text-xs">
+                <span class="text-slate-600 desktop-subtext">Gross Session Fee Paid by Learner:</span>
+                <span id="calcGrossFee" class="font-bold text-slate-900 desktop-title">BDT 1,000</span>
+              </div>
+              <div class="flex justify-between text-xs">
+                <span class="text-slate-600 desktop-subtext">Expert Net Payout (85%):</span>
+                <span id="calcExpertPayout" class="font-bold text-slate-800 desktop-title">BDT 850</span>
+              </div>
+              <div class="flex justify-between text-xs text-omni-700 font-semibold pt-1 border-t border-slate-200">
+                <span>OmniLearn Platform Commission (15%):</span>
+                <span id="calcCommission" class="font-extrabold">BDT 150</span>
+              </div>
+              <div class="flex justify-between text-[11px] text-slate-400">
+                <span>Less: Variable Gateway/Processing Cost (Sec 5.3):</span>
+                <span>- BDT 30 (Net Contrib: <strong id="calcNetContribution" class="text-omni-600">BDT 120</strong>)</span>
+              </div>
+            </div>
+
+            <!-- Payment Gateway Selection -->
+            <div class="space-y-2">
+              <label class="block text-xs font-bold text-slate-600 desktop-subtext">Select Mobile Financial Service (MFS):</label>
+              <div class="grid grid-cols-2 gap-3">
+                <button type="button" onclick="openMfsPaymentModal('bKash')" class="py-3 px-4 rounded-2xl bg-[#e2136e] hover:bg-[#c81061] text-white font-extrabold text-sm shadow-md flex items-center justify-center gap-2 transition cursor-pointer">
+                  <i class="fa-solid fa-mobile-retro"></i>
+                  <span>Pay with bKash</span>
+                </button>
+                <button type="button" onclick="openMfsPaymentModal('Nagad')" class="py-3 px-4 rounded-2xl bg-[#f7941d] hover:bg-[#df8213] text-white font-extrabold text-sm shadow-md flex items-center justify-center gap-2 transition cursor-pointer">
+                  <i class="fa-solid fa-wallet"></i>
+                  <span>Pay with Nagad</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- =================================================================== -->
+    <!-- TAB 5: EXPERT PORTAL, ONBOARDING & SUBSCRIPTIONS (Sec 6.4.2 & Ch 8) -->
+    <!-- =================================================================== -->
+    <main id="view-expert" class="tab-view hidden max-w-7xl mx-auto px-4 sm:px-6 py-6 space-y-8">
+      <!-- 15-Day Free Trial Hero Banner -->
+      <div class="bg-gradient-to-r from-omni-900 via-omni-800 to-emerald-950 rounded-3xl p-6 sm:p-8 text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-md">
+        <div class="space-y-2 max-w-2xl">
+          <div class="inline-flex items-center gap-2 bg-amber-400 text-slate-950 text-xs font-extrabold px-3 py-1 rounded-full uppercase">
+            <i class="fa-solid fa-gift"></i> 15-Day Free Trial for All New Experts
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold font-display">
+            Monetize Your Knowledge & Practical Skills on OmniLearn
+          </h2>
+          <p class="text-omni-100 text-sm">
+            Whether you are a CSE developer, BBA finance mentor, guitarist, or filmmaker—build a verified expert profile, receive matched learner requests, and keep <strong>85%</strong> of every session fee.
+          </p>
+        </div>
+        <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-4 text-center min-w-[230px]">
+          <div class="text-xs text-omni-200 uppercase font-bold">Avg Expert Monthly Earnings</div>
+          <div class="text-3xl font-extrabold font-display text-amber-300 mt-1">BDT 3,400 – 5,950</div>
+          <div class="text-[11px] text-omni-100 mt-1">Based on 4–7 sessions/mo @ BDT 1,000</div>
+        </div>
+      </div>
+
+      <!-- Subscription Packages (Exact prices from Section 6.4.2: Basic BDT 200 & Professional BDT 400) -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- 15-Day Free Trial Card -->
+        <div class="desktop-card bg-white rounded-3xl border border-slate-200 p-6 shadow-sm flex flex-col justify-between">
+          <div class="space-y-4">
+            <span class="bg-slate-100 text-slate-800 text-xs font-bold px-3 py-1 rounded-full">Starter Onboarding</span>
+            <h3 class="text-xl font-extrabold font-display text-slate-900 desktop-title">15-Day Free Trial</h3>
+            <div class="flex items-baseline gap-1">
+              <span class="text-3xl font-extrabold text-slate-900 desktop-title">BDT 0</span>
+              <span class="text-xs text-slate-500">/ first 15 days</span>
+            </div>
+            <p class="text-xs text-slate-500 desktop-subtext">
+              Explore the platform, set up your verified profile, and experience learner inquiries risk-free before subscribing.
+            </p>
+            <ul class="space-y-2 text-xs text-slate-700 desktop-subtext pt-2">
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-omni-600"></i> Full Profile & Credential Verification</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-omni-600"></i> Upload Intro Video & Work Samples</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-omni-600"></i> Direct Learner Messaging</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-omni-600"></i> Keep 85% of Completed Sessions</li>
+            </ul>
+          </div>
+          <button onclick="activateSubscription('15-Day Free Trial (BDT 0)')" class="mt-6 w-full py-2.5 rounded-xl border-2 border-omni-600 text-omni-700 hover:bg-omni-50 font-bold text-xs transition cursor-pointer">
+            Start 15-Day Free Trial
+          </button>
+        </div>
+
+        <!-- Basic Subscription (BDT 200/month) -->
+        <div class="desktop-card bg-white rounded-3xl border border-slate-200 p-6 shadow-sm flex flex-col justify-between">
+          <div class="space-y-4">
+            <span class="bg-omni-100 text-omni-800 text-xs font-bold px-3 py-1 rounded-full">Standard Tier</span>
+            <h3 class="text-xl font-extrabold font-display text-slate-900 desktop-title">Basic Membership</h3>
+            <div class="flex items-baseline gap-1">
+              <span class="text-3xl font-extrabold text-slate-900 desktop-title">BDT 200</span>
+              <span class="text-xs text-slate-500">/ month</span>
+            </div>
+            <p class="text-xs text-slate-500 desktop-subtext">
+              Ideal for university peer tutors, part-time mentors, and hobby instructors sharing specialized skills.
+            </p>
+            <ul class="space-y-2 text-xs text-slate-700 desktop-subtext pt-2">
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-omni-600"></i> Verified Expert Badge & Profile</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-omni-600"></i> Standard Portfolio Upload (up to 5 items)</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-omni-600"></i> Eligible for 1-on-1 & Group Requests</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-omni-600"></i> Instant bKash / Nagad Payouts</li>
+            </ul>
+          </div>
+          <button onclick="activateSubscription('Basic Membership (BDT 200/mo)')" class="mt-6 w-full py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs transition cursor-pointer">
+            Select Basic (BDT 200/mo)
+          </button>
+        </div>
+
+        <!-- Professional Subscription (BDT 400/month) -->
+        <div class="desktop-card bg-white rounded-3xl border-2 border-omni-500 p-6 shadow-lg relative flex flex-col justify-between">
+          <span class="absolute -top-3 right-5 bg-omni-600 text-white text-[10px] font-extrabold px-3 py-0.5 rounded-full uppercase tracking-wider shadow">
+            Most Popular • High Visibility
+          </span>
+          <div class="space-y-4">
+            <span class="bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1 rounded-full">Pro Tier</span>
+            <h3 class="text-xl font-extrabold font-display text-slate-900 desktop-title">Professional Membership</h3>
+            <div class="flex items-baseline gap-1">
+              <span class="text-3xl font-extrabold text-omni-700">BDT 400</span>
+              <span class="text-xs text-slate-500">/ month</span>
+            </div>
+            <p class="text-xs text-slate-500 desktop-subtext">
+              Designed for active freelancers, industry practitioners, and top educators seeking maximum learner traffic.
+            </p>
+            <ul class="space-y-2 text-xs text-slate-700 desktop-subtext pt-2">
+              <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-omni-600"></i> <strong>Priority Placement</strong> in Search & Pools</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-omni-600"></i> Expanded Portfolio & HD Intro Video</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-omni-600"></i> Featured Expert Homepage Spotlight</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-omni-600"></i> Advanced Analytics & Conversion Insights</li>
+            </ul>
+          </div>
+          <button onclick="activateSubscription('Professional Membership (BDT 400/mo)')" class="mt-6 w-full py-2.5 rounded-xl bg-omni-600 hover:bg-omni-700 text-white font-bold text-xs shadow-md transition cursor-pointer">
+            Select Professional (BDT 400/mo)
+          </button>
+        </div>
+      </div>
+
+      <!-- Dual-Track Expert Verification Simulator (Chapter 8.1 Quality Control) -->
+      <div class="desktop-card bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-sm">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+          <div class="lg:col-span-7 space-y-3">
+            <span class="text-xs font-bold uppercase tracking-wider text-omni-600">Chapter 8.1 Quality Control & Trust</span>
+            <h3 class="text-xl font-extrabold font-display text-slate-900 desktop-title">
+              Flexible Multi-Category Expert Verification Process
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-600 desktop-subtext leading-relaxed">
+              As outlined in Chapter 8.1, formal academic degrees are not mandatory for every category. OmniLearn uses a tailored two-track verification workflow managed by Managing Partner <strong>Tahsin Abdullah</strong>:
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+              <div class="p-3.5 rounded-2xl bg-slate-50 desktop-card border border-slate-200">
+                <div class="font-bold text-xs text-slate-900 desktop-title flex items-center gap-1.5">
+                  <i class="fa-solid fa-user-graduate text-sky-600"></i> Track A: Academic & Tech
+                </div>
+                <p class="text-[11px] text-slate-500 desktop-subtext mt-1">
+                  Verifies University ID/Transcripts (DU, BUP, BUET, IBA), GitHub repositories, and corporate employment credentials.
+                </p>
+              </div>
+              <div class="p-3.5 rounded-2xl bg-slate-50 desktop-card border border-slate-200">
+                <div class="font-bold text-xs text-slate-900 desktop-title flex items-center gap-1.5">
+                  <i class="fa-solid fa-palette text-amber-600"></i> Track B: Creative & Practical Skills
+                </div>
+                <p class="text-[11px] text-slate-500 desktop-subtext mt-1">
+                  Verifies demonstrable work portfolios, live performance videos, studio credits, and a 3-minute teaching demo video.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Apply Simulator -->
+          <div class="lg:col-span-5 bg-slate-50 desktop-card rounded-2xl p-5 border border-slate-200 space-y-3">
+            <h4 class="font-bold text-sm text-slate-900 desktop-title">Test Expert Onboarding Submission</h4>
+            <input id="expNameInput" type="text" placeholder="Your Full Name (e.g., Farhan Sadiq)" class="w-full px-3 py-2 text-xs rounded-xl border border-slate-300 bg-white text-slate-800" />
+            <input id="expSkillInput" type="text" placeholder="Micro-Skill (e.g., Python Data Analysis / Violin)" class="w-full px-3 py-2 text-xs rounded-xl border border-slate-300 bg-white text-slate-800" />
+            <input id="expPortfolioInput" type="text" placeholder="Portfolio / LinkedIn / Intro Video URL" class="w-full px-3 py-2 text-xs rounded-xl border border-slate-300 bg-white text-slate-800" />
+            <button onclick="submitExpertApplication()" class="w-full bg-omni-600 hover:bg-omni-700 text-white font-bold text-xs py-2.5 rounded-xl transition cursor-pointer">
+              Submit for Verification & Activate 15-Day Free Trial
+            </button>
+            <div id="expertAppStatus" class="hidden text-xs font-semibold text-omni-700 bg-omni-50 border border-omni-200 p-2.5 rounded-xl"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- =================================================================== -->
+    <!-- TAB 6: BUSINESS ECONOMICS & BREAK-EVEN DASHBOARD (FACULTY VIEW)     -->
+    <!-- =================================================================== -->
+    <main id="view-economics" class="tab-view hidden max-w-7xl mx-auto px-4 sm:px-6 py-6 space-y-8">
+      <!-- Faculty Presentation Header -->
+      <div class="bg-gradient-to-r from-slate-900 via-omni-950 to-slate-900 text-white rounded-3xl p-6 sm:p-8 shadow-lg border border-omni-800">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+          <div class="space-y-2">
+            <div class="inline-flex items-center gap-2 bg-omni-500/20 text-omni-300 border border-omni-500/30 text-xs font-bold px-3 py-1 rounded-full">
+              <i class="fa-solid fa-building-columns"></i> Bangladesh University of Professionals (BUP) • MGT-4104 Term Paper
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold font-display">
+              Interactive Business Economics & Financial Feasibility Model
+            </h2>
+            <p class="text-slate-300 text-xs sm:text-sm max-w-3xl">
+              Built directly from <strong>Chapters 5, 9, 10 & 11</strong> of the business plan. Adjust the sliders below during faculty Q&A to demonstrate operating leverage, the <strong>38.46 (~39) Paying Experts break-even point</strong>, and 3-year cash flows.
+            </p>
+          </div>
+          <div class="grid grid-cols-2 gap-3 min-w-[260px]">
+            <div class="bg-white/10 rounded-2xl p-3.5 border border-white/15 text-center">
+              <div class="text-[11px] text-omni-300 uppercase font-bold">Initial CapEx</div>
+              <div class="text-xl font-extrabold font-display">BDT 7,50,000</div>
+              <div class="text-[10px] text-slate-300">100% Partners' Equity (0 Debt)</div>
+            </div>
+            <div class="bg-white/10 rounded-2xl p-3.5 border border-white/15 text-center">
+              <div class="text-[11px] text-amber-300 uppercase font-bold">Break-Even Point</div>
+              <div class="text-xl font-extrabold font-display text-amber-300">39 Experts</div>
+              <div class="text-[10px] text-slate-300">Exact: 38.46 (BDT 34,615/mo)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- INTERACTIVE BREAK-EVEN SIMULATOR & CHART (Section 5.6) -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <!-- Left Controls & Live KPIs -->
+        <div class="lg:col-span-5 desktop-card bg-white rounded-3xl border border-slate-200 p-6 shadow-sm space-y-5">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-omni-600">Section 5.6 Interactive Calculator</span>
+            <h3 class="text-lg font-extrabold font-display text-slate-900 desktop-title">
+              Monthly Break-Even & Operating Leverage
+            </h3>
+          </div>
+
+          <!-- Preset Scenarios from Table in Section 5.6 & 11.2 -->
+          <div class="space-y-1.5">
+            <label class="text-[11px] font-bold uppercase text-slate-500">Quick Scenarios from Paper:</label>
+            <div class="flex flex-wrap gap-1.5">
+              <button onclick="setEconScenario(25, 4)" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-rose-50 text-rose-700 border border-rose-200 hover:bg-rose-100 cursor-pointer">25 Experts (Loss)</button>
+              <button onclick="setEconScenario(39, 4)" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-amber-100 text-amber-900 border border-amber-300 hover:bg-amber-200 cursor-pointer">39 Experts (Break-Even)</button>
+              <button onclick="setEconScenario(50, 4)" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-omni-100 text-omni-800 border border-omni-300 hover:bg-omni-200 cursor-pointer">Year 1 (50 Exp, 4 Sess)</button>
+              <button onclick="setEconScenario(80, 5)" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-sky-100 text-sky-800 border border-sky-300 hover:bg-sky-200 cursor-pointer">Year 2 (80 Exp, 5 Sess)</button>
+              <button onclick="setEconScenario(150, 7)" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-purple-100 text-purple-800 border border-purple-300 hover:bg-purple-200 cursor-pointer">Year 3 (150 Exp, 7 Sess)</button>
+            </div>
+          </div>
+
+          <!-- Sliders -->
+          <div class="space-y-4 pt-1">
+            <div>
+              <div class="flex justify-between text-xs font-bold mb-1">
+                <span class="text-slate-700 desktop-subtext">Number of Paying Experts per Month:</span>
+                <span id="lblSimExperts" class="text-omni-700 text-sm font-extrabold">50 Experts</span>
+              </div>
+              <input id="sliderExperts" type="range" min="0" max="150" value="50" oninput="updateEconomicsSimulator()" class="w-full accent-omni-600 cursor-pointer" />
+            </div>
+
+            <div>
+              <div class="flex justify-between text-xs font-bold mb-1">
+                <span class="text-slate-700 desktop-subtext">Avg Completed Sessions / Expert / Month:</span>
+                <span id="lblSimSessions" class="text-omni-700 text-sm font-extrabold">4 Sessions</span>
+              </div>
+              <input id="sliderSessions" type="range" min="1" max="10" value="4" oninput="updateEconomicsSimulator()" class="w-full accent-omni-600 cursor-pointer" />
+            </div>
+          </div>
+
+          <!-- Live Calculated Breakdown (Matches Table in Section 5.6) -->
+          <div class="bg-slate-50 desktop-card rounded-2xl p-4 border border-slate-200 space-y-2 text-xs">
+            <div class="flex justify-between">
+              <span class="text-slate-600 desktop-subtext">Subscription Revenue (BDT 300/expert):</span>
+              <span id="simSubRev" class="font-bold text-slate-900 desktop-title">BDT 15,000</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-slate-600 desktop-subtext">Commission Revenue (BDT 150/session):</span>
+              <span id="simCommRev" class="font-bold text-slate-900 desktop-title">BDT 30,000</span>
+            </div>
+            <div class="flex justify-between font-bold text-slate-900 desktop-title border-t border-slate-200 pt-1.5">
+              <span>Total Monthly Revenue:</span>
+              <span id="simTotalRev" class="text-omni-700">BDT 45,000</span>
+            </div>
+            <div class="flex justify-between text-slate-600 desktop-subtext">
+              <span>Less Variable Costs (BDT 30/session):</span>
+              <span id="simVarCost">- BDT 6,000</span>
+            </div>
+            <div class="flex justify-between font-semibold text-slate-800 desktop-title">
+              <span>Total Contribution Margin (<span id="simContribPerExp">BDT 780</span>/expert):</span>
+              <span id="simContribution">BDT 39,000</span>
+            </div>
+            <div class="flex justify-between text-slate-600 desktop-subtext">
+              <span>Less Fixed Monthly Operating Costs:</span>
+              <span>- BDT 30,000</span>
+            </div>
+            <div class="flex justify-between text-sm font-extrabold border-t-2 border-slate-300 pt-2">
+              <span>Monthly Operating Profit / (Loss):</span>
+              <span id="simNetProfit" class="text-omni-600">+ BDT 9,000</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Interactive Break-Even Chart (Replicates Section 5.6 Chart) -->
+        <div class="lg:col-span-7 desktop-card bg-white rounded-3xl border border-slate-200 p-6 shadow-sm flex flex-col justify-between">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+            <div>
+              <h3 class="text-lg font-extrabold font-display text-slate-900 desktop-title">
+                OmniLearn Break-Even Analysis Chart (Section 5.6)
+              </h3>
+              <p class="text-xs text-slate-500 desktop-subtext">
+                Break-Even Formula: Fixed Costs (BDT 30,000) ÷ Contribution/Expert (BDT 780) = <strong>38.46 Experts</strong>
+              </p>
+            </div>
+            <div class="flex items-center gap-4 text-xs font-bold">
+              <span class="flex items-center gap-1.5"><span class="w-3 h-1 bg-sky-600 inline-block"></span> Total Revenue</span>
+              <span class="flex items-center gap-1.5"><span class="w-3 h-1 bg-orange-500 inline-block"></span> Total Cost</span>
+            </div>
+          </div>
+
+          <!-- Responsive SVG Break-Even Graph -->
+          <div class="w-full overflow-x-auto">
+            <svg id="breakEvenSvg" viewBox="0 0 620 320" class="w-full h-auto bg-slate-50/60 rounded-2xl border border-slate-100 p-2">
+              <!-- Axes & Gridlines -->
+              <line x1="65" y1="20" x2="65" y2="270" stroke="#94a3b8" stroke-width="1.5" />
+              <line x1="65" y1="270" x2="590" y2="270" stroke="#94a3b8" stroke-width="1.5" />
+
+              <!-- Horizontal Grid lines (0 to 120,000 BDT) -->
+              <g stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3">
+                <line x1="65" y1="228" x2="590" y2="228" /> <!-- 20,000 -->
+                <line x1="65" y1="207.5" x2="590" y2="207.5" /> <!-- 30,000 Fixed Cost -->
+                <line x1="65" y1="186" x2="590" y2="186" /> <!-- 40,000 -->
+                <line x1="65" y1="145" x2="590" y2="145" /> <!-- 60,000 -->
+                <line x1="65" y1="103" x2="590" y2="103" /> <!-- 80,000 -->
+                <line x1="65" y1="62" x2="590" y2="62" />   <!-- 100,000 -->
+                <line x1="65" y1="20" x2="590" y2="20" />   <!-- 120,000 -->
+              </g>
+
+              <!-- Y-Axis Labels -->
+              <g fill="#64748b" font-size="10" text-anchor="end" font-family="Inter">
+                <text x="58" y="273">0</text>
+                <text x="58" y="231">20,000</text>
+                <text x="58" y="210" fill="#ea580c" font-weight="bold">30,000</text>
+                <text x="58" y="189">40,000</text>
+                <text x="58" y="148">60,000</text>
+                <text x="58" y="106">80,000</text>
+                <text x="58" y="65">100,000</text>
+                <text x="58" y="24">120,000</text>
+              </g>
+
+              <!-- X-Axis Labels (0 to 120 Experts) -->
+              <g fill="#64748b" font-size="10" text-anchor="middle" font-family="Inter">
+                <text x="65" y="288">0</text>
+                <text x="152.5" y="288">20</text>
+                <text x="240" y="288">40</text>
+                <text x="327.5" y="288">60</text>
+                <text x="415" y="288">80</text>
+                <text x="502.5" y="288">100</text>
+                <text x="590" y="288">120</text>
+                <text x="327" y="308" font-size="11" font-weight="bold" fill="#334155">Number of Paying Experts</text>
+              </g>
+
+              <!-- Break-even vertical dashed line at 38.46 experts (x = 65 + 38.46 * (525/120) = 233.3) -->
+              <line x1="233.3" y1="20" x2="233.3" y2="270" stroke="#0284c7" stroke-width="1.5" stroke-dasharray="5 4" />
+
+              <!-- Total Cost Line: from (0, 30,000 -> y=207.5) to (120, 44,400 -> y=177.5) -->
+              <line id="svgCostLine" x1="65" y1="207.5" x2="590" y2="177.5" stroke="#f97316" stroke-width="3.5" />
+
+              <!-- Total Revenue Line: from (0, 0 -> y=270) to (120, 108,000 -> y=45) -->
+              <line id="svgRevLine" x1="65" y1="270" x2="590" y2="45" stroke="#0284c7" stroke-width="3.5" />
+
+              <!-- Break-Even Intersection Point (233.3, 197.9) -->
+              <circle cx="233.3" cy="197.9" r="6" fill="#0284c7" stroke="#ffffff" stroke-width="2" />
+
+              <!-- Callout Box matching Section 5.6 image -->
+              <rect x="275" y="198" width="165" height="46" rx="8" fill="#ffffff" stroke="#64748b" stroke-width="1.2" />
+              <text x="285" y="213" font-size="10" font-weight="bold" fill="#0f172a">Break-even point</text>
+              <text x="285" y="226" font-size="10" fill="#334155">38.46 experts (~39)</text>
+              <text x="285" y="238" font-size="10" fill="#16a34a" font-weight="bold">BDT 34,615 per month</text>
+              <line x1="275" y1="215" x2="241" y2="201" stroke="#0f172a" stroke-width="1.5" />
+
+              <!-- Live Selected Expert Marker -->
+              <circle id="svgCurrentMarker" cx="283.75" cy="176.25" r="7" fill="#16a34a" stroke="#ffffff" stroke-width="2.5" />
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3-YEAR PRO FORMA FINANCIAL STATEMENTS & STARTUP COSTS (Chapters 5 & 11) -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <!-- Startup Costs (BDT 7,50,000) & Monthly Fixed Costs (BDT 30,000) -->
+        <div class="lg:col-span-5 desktop-card bg-white rounded-3xl border border-slate-200 p-6 shadow-sm space-y-6">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-omni-600">Section 5.5 & 11.1</span>
+            <h3 class="text-base font-extrabold font-display text-slate-900 desktop-title">
+              Start-up Investment & Sources/Uses of Funds
+            </h3>
+            <div class="mt-3 space-y-1.5 text-xs">
+              <div class="flex justify-between py-1 border-b border-slate-100"><span>Website & Platform Development</span><span class="font-bold">BDT 3,00,000</span></div>
+              <div class="flex justify-between py-1 border-b border-slate-100"><span>Initial Working Capital (6 Mos Fixed Costs)</span><span class="font-bold">BDT 1,80,000</span></div>
+              <div class="flex justify-between py-1 border-b border-slate-100"><span>Initial Marketing & Promotions</span><span class="font-bold">BDT 70,000</span></div>
+              <div class="flex justify-between py-1 border-b border-slate-100"><span>Contingency Reserve</span><span class="font-bold">BDT 60,000</span></div>
+              <div class="flex justify-between py-1 border-b border-slate-100"><span>UI/UX Design & Branding</span><span class="font-bold">BDT 40,000</span></div>
+              <div class="flex justify-between py-1 border-b border-slate-100"><span>Equipment & Technical Accessories</span><span class="font-bold">BDT 40,000</span></div>
+              <div class="flex justify-between py-1 border-b border-slate-100"><span>Legal Registration (RJSC Partnership Act 1932)</span><span class="font-bold">BDT 30,000</span></div>
+              <div class="flex justify-between py-1 border-b border-slate-100"><span>Hosting, Security & Software Setup</span><span class="font-bold">BDT 30,000</span></div>
+              <div class="flex justify-between pt-2 font-extrabold text-sm text-omni-700"><span>Total Partners' Capital Investment</span><span>BDT 7,50,000</span></div>
+            </div>
+          </div>
+
+          <div class="border-t border-slate-200 pt-4">
+            <span class="text-xs font-bold uppercase tracking-wider text-omni-600">Section 5.3 Fixed Cost Budget</span>
+            <h3 class="text-base font-extrabold font-display text-slate-900 desktop-title">
+              Monthly Fixed Operating Costs (BDT 30,000/mo)
+            </h3>
+            <div class="mt-2 space-y-1 text-xs">
+              <div class="flex justify-between"><span>Marketing & Promotion</span><span class="font-semibold">BDT 8,000/mo</span></div>
+              <div class="flex justify-between"><span>Platform Hosting & Maintenance</span><span class="font-semibold">BDT 7,000/mo</span></div>
+              <div class="flex justify-between"><span>Customer Support & Administration</span><span class="font-semibold">BDT 5,000/mo</span></div>
+              <div class="flex justify-between"><span>General Administrative Expenses</span><span class="font-semibold">BDT 4,000/mo</span></div>
+              <div class="flex justify-between"><span>Software & Communication Tools</span><span class="font-semibold">BDT 3,000/mo</span></div>
+              <div class="flex justify-between"><span>Depreciation of Tech Assets</span><span class="font-semibold">BDT 3,000/mo</span></div>
+              <div class="flex justify-between pt-1.5 border-t border-slate-200 font-extrabold text-slate-900 desktop-title"><span>Total Fixed Costs (BDT 3,60,000/yr)</span><span>BDT 30,000/mo</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3-Year Pro Forma Income Statement, Balance Sheet & Ratios (Chapter 11) -->
+        <div class="lg:col-span-7 desktop-card bg-white rounded-3xl border border-slate-200 p-6 shadow-sm space-y-5 overflow-x-auto">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-omni-600">Chapter 11 Financial Projections</span>
+            <h3 class="text-lg font-extrabold font-display text-slate-900 desktop-title">
+              3-Year Pro Forma Income Statement, Cash Flow & Ratios
+            </h3>
+          </div>
+
+          <table class="w-full text-left border-collapse text-xs">
+            <thead>
+              <tr class="border-b-2 border-slate-200 text-slate-500 uppercase">
+                <th class="py-2.5 pr-3">Particulars</th>
+                <th class="py-2.5 px-3 text-right">Year 1</th>
+                <th class="py-2.5 px-3 text-right">Year 2</th>
+                <th class="py-2.5 pl-3 text-right">Year 3</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100">
+              <tr>
+                <td class="py-2 font-medium">Avg Paying Experts / Month</td>
+                <td class="py-2 px-3 text-right font-bold">50</td>
+                <td class="py-2 px-3 text-right font-bold">80</td>
+                <td class="py-2 pl-3 text-right font-bold">150</td>
+              </tr>
+              <tr>
+                <td class="py-2 font-medium">Avg Sessions / Expert / Month (Total Annual)</td>
+                <td class="py-2 px-3 text-right">4 (2,400)</td>
+                <td class="py-2 px-3 text-right">5 (4,800)</td>
+                <td class="py-2 pl-3 text-right">7 (12,600)</td>
+              </tr>
+              <tr>
+                <td class="py-2 font-medium text-slate-500">Gross Transaction Value (GTV @ BDT 1,000)</td>
+                <td class="py-2 px-3 text-right text-slate-500">BDT 24,00,000</td>
+                <td class="py-2 px-3 text-right text-slate-500">BDT 48,00,000</td>
+                <td class="py-2 pl-3 text-right text-slate-500">BDT 1,26,00,000</td>
+              </tr>
+              <tr>
+                <td class="py-2 font-medium">Subscription Revenue (BDT 300/mo avg)</td>
+                <td class="py-2 px-3 text-right">BDT 1,80,000</td>
+                <td class="py-2 px-3 text-right">BDT 2,88,000</td>
+                <td class="py-2 pl-3 text-right">BDT 5,40,000</td>
+              </tr>
+              <tr>
+                <td class="py-2 font-medium">Commission Revenue (15% of GTV)</td>
+                <td class="py-2 px-3 text-right">BDT 3,60,000</td>
+                <td class="py-2 px-3 text-right">BDT 7,20,000</td>
+                <td class="py-2 pl-3 text-right">BDT 18,90,000</td>
+              </tr>
+              <tr class="bg-omni-50/70 desktop-card font-extrabold text-slate-900">
+                <td class="py-2.5 pl-2">Total OmniLearn Revenue</td>
+                <td class="py-2.5 px-3 text-right text-omni-700">BDT 5,40,000</td>
+                <td class="py-2.5 px-3 text-right text-omni-700">BDT 10,08,000</td>
+                <td class="py-2.5 pr-2 text-right text-omni-700">BDT 24,30,000</td>
+              </tr>
+              <tr>
+                <td class="py-2 font-medium">Fixed Operating Costs (incl. BDT 36k Depr.)</td>
+                <td class="py-2 px-3 text-right">BDT 3,60,000</td>
+                <td class="py-2 px-3 text-right">BDT 3,60,000</td>
+                <td class="py-2 pl-3 text-right">BDT 3,60,000</td>
+              </tr>
+              <tr>
+                <td class="py-2 font-medium">Variable Operating Costs (BDT 30/session)</td>
+                <td class="py-2 px-3 text-right">BDT 72,000</td>
+                <td class="py-2 px-3 text-right">BDT 1,44,000</td>
+                <td class="py-2 pl-3 text-right">BDT 3,78,000</td>
+              </tr>
+              <tr class="bg-emerald-50 desktop-card font-extrabold text-omni-800 text-sm">
+                <td class="py-2.5 pl-2">Projected Operating Profit (EBIT)</td>
+                <td class="py-2.5 px-3 text-right">BDT 1,08,000</td>
+                <td class="py-2.5 px-3 text-right">BDT 5,04,000</td>
+                <td class="py-2.5 pr-2 text-right">BDT 16,92,000</td>
+              </tr>
+              <tr>
+                <td class="py-2 font-semibold text-slate-600">Closing Cash Balance (Sec 11.5)</td>
+                <td class="py-2 px-3 text-right font-bold">BDT 3,24,000</td>
+                <td class="py-2 px-3 text-right font-bold">BDT 8,64,000</td>
+                <td class="py-2 pl-3 text-right font-bold">BDT 25,92,000</td>
+              </tr>
+              <tr>
+                <td class="py-2 font-semibold text-slate-600">Operating Profit Margin / EBITDA Margin</td>
+                <td class="py-2 px-3 text-right font-bold text-omni-700">20.0% / 26.7%</td>
+                <td class="py-2 px-3 text-right font-bold text-omni-700">50.0% / 53.6%</td>
+                <td class="py-2 pl-3 text-right font-bold text-omni-700">69.6% / 71.1%</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- Founding Management Team & Industry Validation Strip (Chapters 9 & 12) -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+            <div class="p-3.5 rounded-2xl bg-slate-50 desktop-card border border-slate-200">
+              <div class="text-[11px] font-bold uppercase text-omni-700">Chapter 9 Equal Partnership (50/50)</div>
+              <div class="font-bold text-xs text-slate-900 desktop-title mt-1">Asif Ahmed & Tahsin Abdullah</div>
+              <p class="text-[11px] text-slate-500 desktop-subtext mt-0.5">
+                <strong>Asif Ahmed:</strong> Strategy, Marketing, Finance & Admin.<br/>
+                <strong>Tahsin Abdullah:</strong> Platform Tech, Daily Ops & Expert Vetting.
+              </p>
+            </div>
+            <div class="p-3.5 rounded-2xl bg-slate-50 desktop-card border border-slate-200">
+              <div class="text-[11px] font-bold uppercase text-amber-700">Chapter 12 Industry Expert Validation</div>
+              <div class="font-bold text-xs text-slate-900 desktop-title mt-1">Shifat Ul Hoque (Owner, Unbolt Academy)</div>
+              <p class="text-[11px] text-slate-500 desktop-subtext mt-0.5">
+                Validated strong demand for targeted micro-learning & group cost-splitting across Dhaka university hubs.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- =================================================================== -->
+  <!-- MODAL 1: EXPERT PROFILE MODAL (Matches Section 3.3.2 Rahim Khan UI) -->
+  <!-- =================================================================== -->
+  <div id="expertProfileModal" class="fixed inset-0 z-50 hidden bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-zinc-950 text-white border-4 border-omni-500 rounded-[36px] max-w-md w-full overflow-hidden shadow-2xl animate-fadeIn">
+      <!-- Top Bar -->
+      <div class="px-5 pt-4 pb-2 flex items-center justify-between border-b border-zinc-800">
+        <button onclick="closeExpertModal()" class="text-zinc-400 hover:text-white text-sm cursor-pointer"><i class="fa-solid fa-chevron-left mr-1"></i> Back</button>
+        <span class="font-display font-bold text-sm text-omni-400">OmniLearn Verified Profile</span>
+        <button onclick="closeExpertModal()" class="text-zinc-400 hover:text-white text-lg cursor-pointer">&times;</button>
+      </div>
+
+      <div class="p-5 space-y-3.5 max-h-[82vh] overflow-y-auto">
+        <div class="text-center space-y-2">
+          <h3 id="modalExpertTitle" class="text-lg font-extrabold font-display text-white">Expert Profile: Rahim Khan</h3>
+          <div class="relative inline-block">
+            <img id="modalExpertImg" src="" alt="Expert" class="w-24 h-24 rounded-full object-cover border-3 border-omni-400 mx-auto shadow-lg" />
+            <span class="absolute bottom-0 right-0 bg-sky-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs border-2 border-zinc-950">
+              <i class="fa-solid fa-check"></i>
+            </span>
+          </div>
+          <div class="flex items-center justify-center gap-2 text-xs">
+            <span id="modalExpertRating" class="text-amber-400 font-bold">★★★★★ 4.9</span>
+            <span class="text-zinc-500">•</span>
+            <span id="modalExpertPrice" class="text-omni-400 font-extrabold">BDT 500 / session</span>
+          </div>
+        </div>
+
+        <!-- QUALIFICATIONS BOX -->
+        <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-3.5">
+          <div class="text-[11px] font-bold uppercase tracking-wider text-zinc-400 mb-1">QUALIFICATIONS</div>
+          <ul id="modalQualifications" class="text-xs text-zinc-200 space-y-1 list-disc list-inside"></ul>
+        </div>
+
+        <!-- EXPERIENCE BOX -->
+        <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-3.5">
+          <div class="text-[11px] font-bold uppercase tracking-wider text-zinc-400 mb-1">EXPERIENCE</div>
+          <ul id="modalExperience" class="text-xs text-zinc-200 space-y-1 list-disc list-inside"></ul>
+        </div>
+
+        <!-- AREAS OF EXPERTISE BOX -->
+        <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-3.5">
+          <div class="text-[11px] font-bold uppercase tracking-wider text-zinc-400 mb-1">AREAS OF EXPERTISE</div>
+          <ul id="modalExpertise" class="text-xs text-zinc-200 space-y-1 list-disc list-inside"></ul>
+        </div>
+
+        <!-- PORTFOLIO & INTRO VIDEO PREVIEW -->
+        <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-3.5 space-y-2">
+          <div class="text-[11px] font-bold uppercase tracking-wider text-zinc-400">PORTFOLIO & INTRO VIDEO</div>
+          <div id="introVideoBox" class="hidden bg-black rounded-xl p-3 border border-omni-500/50 space-y-2">
+            <div class="flex items-center justify-between text-xs text-omni-400 font-bold">
+              <span><i class="fa-solid fa-circle-play mr-1"></i> Playing 60s Intro & Teaching Style Preview</span>
+              <div class="flex items-end gap-1 h-4">
+                <span class="w-1 bg-omni-400 wave-bar"></span>
+                <span class="w-1 bg-omni-400 wave-bar" style="animation-delay:0.2s"></span>
+                <span class="w-1 bg-omni-400 wave-bar" style="animation-delay:0.4s"></span>
+              </div>
+            </div>
+            <p id="modalIntroQuote" class="text-xs text-zinc-300 italic"></p>
+          </div>
+          <button onclick="toggleIntroVideo()" class="w-full bg-omni-500 hover:bg-omni-400 text-zinc-950 font-extrabold text-xs py-3 rounded-full uppercase tracking-wider transition cursor-pointer">
+            <i class="fa-solid fa-play mr-1"></i> START INTRO VIDEO
+          </button>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="grid grid-cols-2 gap-2.5 pt-1">
+          <button id="modalBtnMessage" class="bg-zinc-800 hover:bg-zinc-700 text-white font-bold text-xs py-3 rounded-2xl transition cursor-pointer">
+            <i class="fa-regular fa-comment-dots mr-1"></i> Message Expert
+          </button>
+          <button id="modalBtnBook" class="bg-omni-600 hover:bg-omni-500 text-white font-bold text-xs py-3 rounded-2xl transition cursor-pointer">
+            <i class="fa-solid fa-calendar-check mr-1"></i> Book Session
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =================================================================== -->
+  <!-- MODAL 2: bKash / Nagad PAYMENT GATEWAY SIMULATION                   -->
+  <!-- =================================================================== -->
+  <div id="mfsPaymentModal" class="fixed inset-0 z-50 hidden bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-sm w-full overflow-hidden shadow-2xl">
+      <div id="mfsHeader" class="bg-[#e2136e] text-white p-5 flex items-center justify-between">
+        <div>
+          <div class="text-[10px] uppercase tracking-wider opacity-90 font-bold">Merchant: OmniLearn Bangladesh</div>
+          <h3 id="mfsTitle" class="text-xl font-extrabold font-display">bKash Checkout</h3>
+        </div>
+        <div id="mfsAmountBadge" class="bg-white/20 px-3 py-1.5 rounded-xl font-extrabold text-sm">
+          BDT 1,000
+        </div>
+      </div>
+
+      <form onsubmit="completeMfsPayment(event)" class="p-5 space-y-4 text-sm">
+        <div>
+          <label class="block text-xs font-bold text-slate-600 mb-1">Your Mobile Wallet Number</label>
+          <input type="text" required value="01711-XXXXXX" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 font-mono text-sm focus:outline-none" />
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-600 mb-1">One-Time Verification Code (OTP)</label>
+          <input type="password" required value="123456" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 font-mono text-sm focus:outline-none" />
+        </div>
+        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 text-xs text-slate-600 space-y-1">
+          <div class="flex justify-between"><span>Escrow Hold until Session Completion:</span><span class="font-bold text-omni-700">Yes (100% Protected)</span></div>
+          <div class="flex justify-between"><span>Auto Split (85% Expert / 15% OmniLearn):</span><span class="font-bold">Automated</span></div>
+        </div>
+        <div class="flex gap-2">
+          <button type="button" onclick="closeMfsModal()" class="w-1/3 py-2.5 rounded-xl bg-slate-100 text-slate-700 font-bold text-xs cursor-pointer">Cancel</button>
+          <button id="mfsConfirmBtn" type="submit" class="w-2/3 py-2.5 rounded-xl bg-[#e2136e] text-white font-extrabold text-xs shadow-md cursor-pointer">Confirm Payment</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- =================================================================== -->
+  <!-- MODAL 3: POST-SESSION 5-STAR RATING & REVIEW MODAL (Sec 3.3.2)      -->
+  <!-- =================================================================== -->
+  <div id="reviewModal" class="fixed inset-0 z-50 hidden bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 space-y-4 shadow-2xl">
+      <div class="flex items-center justify-between">
+        <span class="bg-omni-100 text-omni-800 text-xs font-bold px-3 py-1 rounded-full">Step 4: Rate & Share</span>
+        <button onclick="closeReviewModal()" class="text-slate-400 hover:text-slate-700 text-xl cursor-pointer">&times;</button>
+      </div>
+      <h3 class="text-xl font-extrabold font-display text-slate-900">Session Completed! Rate Your Expert</h3>
+      <p class="text-xs text-slate-500">
+        Your verified feedback maintains quality across OmniLearn and releases the 85% escrow payout to the instructor.
+      </p>
+      <div class="flex items-center justify-center gap-2 text-3xl text-amber-400 py-2">
+        <i class="fa-solid fa-star cursor-pointer"></i>
+        <i class="fa-solid fa-star cursor-pointer"></i>
+        <i class="fa-solid fa-star cursor-pointer"></i>
+        <i class="fa-solid fa-star cursor-pointer"></i>
+        <i class="fa-solid fa-star cursor-pointer"></i>
+      </div>
+      <textarea rows="3" class="w-full rounded-xl border border-slate-300 p-3 text-xs text-slate-800" placeholder="Share how the expert helped solve your specific learning problem...">Rahim bhai solved my Next.js API route & Vercel deployment bottleneck in 25 minutes! Much better than watching a 20-hour video course.</textarea>
+      <button onclick="submitReview()" class="w-full py-3 rounded-xl bg-omni-600 hover:bg-omni-700 text-white font-extrabold text-xs uppercase tracking-wider cursor-pointer">
+        Submit Verified Review & Release Escrow
+      </button>
+    </div>
+  </div>
+
+  <!-- =================================================================== -->
+  <!-- MODAL 4: 48-HOUR FREE HOSTING GUIDE FOR FACULTY PRESENTATION        -->
+  <!-- =================================================================== -->
+  <div id="hostingModal" class="fixed inset-0 z-50 hidden bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-6 space-y-4 shadow-2xl">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-cloud-arrow-up text-omni-600 text-xl"></i>
+          <h3 class="text-lg font-extrabold font-display text-slate-900">Host for Free in 15 Seconds (48+ Hours Live)</h3>
+        </div>
+        <button onclick="closeHostingModal()" class="text-slate-400 hover:text-slate-700 text-xl cursor-pointer">&times;</button>
+      </div>
+      <p class="text-xs text-slate-600 leading-relaxed">
+        Because this entire OmniLearn prototype is engineered as a <strong>zero-backend, single-file application (`index.html`)</strong>, it requires no database setup and stays live 24/7 for free on any static host during your BUP faculty presentation:
+      </p>
+      <div class="space-y-2.5 text-xs">
+        <div class="p-3 rounded-2xl bg-omni-50 border border-omni-200">
+          <div class="font-extrabold text-omni-900">Option 1: Tiiny.host or Netlify Drop (Fastest — 15 Seconds, No Coding)</div>
+          <p class="text-omni-800 mt-0.5">
+            1. Save this code as <code>index.html</code> on your laptop.<br/>
+            2. Open <strong>app.netlify.com/drop</strong> or <strong>tiiny.host</strong> in your browser.<br/>
+            3. Drag & drop the folder containing <code>index.html</code>. You will immediately get a shareable <code>https://omnilearn-bup.netlify.app</code> link that stays live for your entire 48-hour faculty evaluation (and beyond)!
+          </p>
+        </div>
+        <div class="p-3 rounded-2xl bg-slate-50 border border-slate-200">
+          <div class="font-extrabold text-slate-900">Option 2: GitHub Pages / Vercel (Permanent Free Hosting)</div>
+          <p class="text-slate-600 mt-0.5">
+            Upload <code>index.html</code> to any public GitHub repository and enable GitHub Pages in Settings, or import to Vercel for an instant global CDN URL you can put on a QR code slide for Dr. Mohammad Ali and the faculty panel.
+          </p>
+        </div>
+      </div>
+      <button onclick="closeHostingModal()" class="w-full py-2.5 rounded-xl bg-slate-900 text-white font-bold text-xs cursor-pointer">
+        Got It — Ready for Presentation
+      </button>
+    </div>
+  </div>
+
+  <!-- GLOBAL NOTIFICATION TOAST -->
+  <div id="toastBanner" class="fixed bottom-5 right-5 z-50 hidden bg-slate-900 text-white px-4 py-3 rounded-2xl shadow-xl border border-omni-500 flex items-center gap-3 text-xs font-semibold max-w-sm">
+    <i class="fa-solid fa-circle-check text-omni-400 text-base"></i>
+    <span id="toastText">Action completed successfully!</span>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-white border-t border-slate-200 mt-12 py-6 px-4 text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <span class="font-display font-extrabold text-slate-900">Omni<span class="text-omni-600">Learn</span></span>
+        <span>— "Learn Anything. From Anyone."</span>
+      </div>
+      <div class="text-center sm:text-right">
+        BUP BBA Term Paper (MGT-4104) • Submitted by <strong>Asif Ahmed Bhuiyan</strong> (23241608057) & <strong>Abdullah Abrar Jahin</strong> (2224161115)
+      </div>
+    </div>
+  </footer>
+
+  <!-- =================================================================== -->
+  <!-- APPLICATION STATE & INTERACTIVE LOGIC                               -->
+  <!-- =================================================================== -->
+  <script>
+    // 1. MICRO-LEARNING CATEGORIES (Matches Section 6.4.1 Mockup)
+    const CATEGORIES = [
+      { id: 'Development', name: 'Development', icon: 'fa-code', color: 'from-sky-500 to-blue-600', bg: 'bg-sky-50', border: 'border-sky-200', text: 'text-sky-700' },
+      { id: 'Design', name: 'Design', icon: 'fa-pen-ruler', color: 'from-rose-500 to-pink-600', bg: 'bg-rose-50', border: 'border-rose-200', text: 'text-rose-700' },
+      { id: 'Marketing', name: 'Marketing', icon: 'fa-bullhorn', color: 'from-emerald-500 to-omni-600', bg: 'bg-omni-50', border: 'border-omni-200', text: 'text-omni-700' },
+      { id: 'Business', name: 'Business', icon: 'fa-chart-column', color: 'from-amber-500 to-orange-600', bg: 'bg-amber-50', border: 'border-amber-200', text: 'text-amber-700' },
+      { id: 'Creativity', name: 'Creativity', icon: 'fa-lightbulb', color: 'from-purple-500 to-indigo-600', bg: 'bg-purple-50', border: 'border-purple-200', text: 'text-purple-700' },
+      { id: 'Photography', name: 'Photography', icon: 'fa-camera-retro', color: 'from-teal-500 to-cyan-600', bg: 'bg-teal-50', border: 'border-teal-200', text: 'text-teal-700' }
+    ];
+
+    // 2. VERIFIED EXPERTS DATA (Exact personas from Section 3.3.2 & 6.4.1 Mockups)
+    const EXPERTS = [
+      {
+        id: 1,
+        name: 'Rahim Khan',
+        role: 'Senior Next.js Developer',
+        category: 'Development',
+        rating: 4.9,
+        reviews: 42,
+        price: 500,
+        tier: 'Professional',
+        avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80',
+        bio: 'Senior Next.js Developer specializing in API route optimization, ORM scaling, and Vercel/AWS production deployments.',
+        tags: ['Python', 'React', 'Next.js', 'API Design'],
+        qualifications: ['BSc, CSE, University of Dhaka (DU)', '5 Years React & Next.js Production Experience'],
+        experience: ['Senior Developer, TechCorp Bangladesh', 'Freelance React Lead (120+ global projects)'],
+        expertise: ['React, Next.js, API Design', 'Vercel vs AWS Deployment Strategies', 'Database Connection & ORM Optimization'],
+        introQuote: '"Assalamu Alaikum! Instead of watching a 30-hour React course, book a 30-minute session with me and we will debug your exact Next.js API route or deployment live."'
+      },
+      {
+        id: 2,
+        name: 'Nila Ahmed',
+        role: 'Digital Marketing Lead',
+        category: 'Marketing',
+        rating: 4.8,
+        reviews: 36,
+        price: 500,
+        tier: 'Professional',
+        avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80',
+        bio: 'Digital marketing lead and top consultant helping Bangladeshi brands & freelancers master technical SEO and content funnels.',
+        tags: ['SEO', 'Social', 'Content', 'Analytics'],
+        qualifications: ['BBA & MBA in Marketing, IBA', 'Google Analytics & Technical SEO Certified'],
+        experience: ['Digital Marketing Lead, GrowthPulse BD', 'SEO Consultant for 40+ E-commerce Startups'],
+        expertise: ['Technical SEO Audits & Keyword Strategy', 'Meta & Search Ad Campaign ROAS Optimization', 'Freelance Upwork/Fiverr Portfolio Positioning'],
+        introQuote: '"Hi! Let\'s audit your website or client campaign together in real time so you can rank on Google and grow conversions immediately."'
+      },
+      {
+        id: 3,
+        name: 'Shakib Rahman',
+        role: 'Full Stack UX Designer',
+        category: 'Design',
+        rating: 4.7,
+        reviews: 29,
+        price: 600,
+        tier: 'Professional',
+        avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80',
+        bio: 'Full Stack UX Designer, Figma community creator, and product design mentor for mobile and SaaS applications.',
+        tags: ['Figma', 'UI/UX', 'User Research'],
+        qualifications: ['BSc in Software Engineering', 'Certified UX Research & Interaction Specialist'],
+        experience: ['Lead Product Designer, FinTech Dhaka', 'Design System Architect (50+ Mobile Apps)'],
+        expertise: ['Figma Auto-Layout & Component Systems', 'User Journey Mapping & Wireframing', 'Portfolio Review for Junior UI/UX Designers'],
+        introQuote: '"Bring your Figma file to our 1-on-1 session! We will fix your spacing, typography, and interactive prototype states live."'
+      },
+      {
+        id: 4,
+        name: 'Sumona Islam',
+        role: 'Business Strategy Consultant',
+        category: 'Business',
+        rating: 4.9,
+        reviews: 51,
+        price: 800,
+        tier: 'Professional',
+        avatar: 'https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?auto=format&fit=crop&w=300&q=80',
+        bio: 'Business strategy consultant specializing in startup financial modeling, pro forma statements, break-even analysis, and pitch decks.',
+        tags: ['Startups', 'Finance', 'Scale', 'Accounting'],
+        qualifications: ['BBA & MBA in Finance, BUP', 'Financial Modeling & Valuation Analyst (FMVA)'],
+        experience: ['Strategy Consultant, Dhaka Venture Advisory', 'Mentor for 30+ University Business Plan Competitions'],
+        expertise: ['Pro Forma Income, Balance Sheet & Cash Flows', 'Break-Even & Operating Leverage Analysis', 'Accounting Troubleshooting & Ratio Interpretation'],
+        introQuote: '"Stuck on a complex accounting adjustment, break-even chart, or startup financial model? Let\'s balance your sheets together in one focused session."'
+      },
+      {
+        id: 5,
+        name: 'Arifuzzaman',
+        role: 'Acoustic Guitar & Folk Instructor',
+        category: 'Creativity',
+        rating: 4.9,
+        reviews: 64,
+        price: 500,
+        tier: 'Basic',
+        avatar: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=300&q=80',
+        bio: 'Session guitarist with 8+ years of studio and stage experience teaching specific songs, chord progressions, and strumming patterns.',
+        tags: ['Guitar Chords', 'Bangla Folk', 'Strumming'],
+        qualifications: ['8 Years Studio & Live Acoustic Performance', 'Verified Practical Portfolio & Live Audition (Track B)'],
+        experience: ['Lead Acoustic Guitarist, Folk Studio Dhaka', 'Taught 300+ students specific songs on-demand'],
+        expertise: ['Learning "Majhe Majhe Shunte Pai" Chords (C, G, Am)', 'Fingerstyle & Rhythm Strumming Patterns', 'Barre Chord Transition Troubleshooting'],
+        introQuote: '"Want to play your favorite Bangla song tonight without taking a 1-year music theory course? Grab your guitar and let\'s master the exact chords!"'
+      },
+      {
+        id: 6,
+        name: 'Maria Chowdhury',
+        role: 'Commercial Filmmaker & Photographer',
+        category: 'Photography',
+        rating: 4.7,
+        reviews: 22,
+        price: 700,
+        tier: 'Basic',
+        avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=300&q=80',
+        bio: 'Visual storyteller helping creators master portrait lighting, manual DSLR settings, and DaVinci Resolve color grading.',
+        tags: ['Portrait Lighting', 'Color Grading', 'DSLR'],
+        qualifications: ['Award-Winning Short Filmmaker (Dhaka Int. Film Fest)', 'Verified Commercial Visual Portfolio (Track B)'],
+        experience: ['Director of Photography, FrameCraft Studios', 'Commercial Product & Portrait Photographer'],
+        expertise: ['Low-Budget 3-Point Cinematic Lighting', 'DaVinci Resolve & Premiere Color Grading', 'Manual Exposure Triangle & Lens Selection'],
+        introQuote: '"Show me your raw footage or camera setup and I will walk you through lighting placement and color grading step by step."'
+      }
+    ];
+
+    // 3. GROUP LEARNING POOLS (Matches Section 1.3 & 3.3.2 Cost-Sharing Model)
+    let GROUP_POOLS = [
+      {
+        id: 101,
+        category: 'Programming & Tech → Advanced React',
+        topic: 'Vercel vs AWS deployment for production & Next.js API routes?',
+        expertName: 'Rahim Khan',
+        expertRating: 4.9,
+        totalFee: 1600,
+        currentLearners: 3,
+        maxLearners: 4,
+        joinedByUser: false,
+        participants: ['Shakib', 'Asif', 'Sumona']
+      },
+      {
+        id: 102,
+        category: 'Business & Finance → Financial Ratios',
+        topic: 'Pro Forma Cash Flow Statement & Break-Even Ratio Analysis',
+        expertName: 'Sumona Islam',
+        expertRating: 4.9,
+        totalFee: 1200,
+        currentLearners: 2,
+        maxLearners: 4,
+        joinedByUser: false,
+        participants: ['Tahsin', 'Nila']
+      },
+      {
+        id: 103,
+        category: 'Music & Arts → Acoustic Guitar',
+        topic: 'Guitar Chords & Strumming Pattern for "Majhe Majhe Shunte Pai"',
+        expertName: 'Arifuzzaman',
+        expertRating: 4.9,
+        totalFee: 800,
+        currentLearners: 3,
+        maxLearners: 4,
+        joinedByUser: false,
+        participants: ['Tania', 'Maria', 'Rafi']
+      },
+      {
+        id: 104,
+        category: 'Digital Marketing → Technical SEO',
+        topic: 'Local Business SEO Ranking & Keyword Research in Bangladesh',
+        expertName: 'Nila Ahmed',
+        expertRating: 4.8,
+        totalFee: 1000,
+        currentLearners: 4,
+        maxLearners: 5,
+        joinedByUser: false,
+        participants: ['Farhan', 'Sadia', 'Imran', 'Mahi']
+      }
+    ];
+
+    // 4. CLASSROOM CHAT TRANSCRIPTS (Exact quotes from Section 3.3.1 Screenshots)
+    const CLASSROOM_CHATS = {
+      group: [
+        { sender: 'Tutor Rahim', avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80', text: "Tutor Rahim: Welcome, everyone! Is the shared screen clear? Let's check the code for the Next.js API route.", isSelf: false },
+        { sender: 'Tania', avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=100&q=80', text: "Yes, Rahim bhai. The endpoint looks good. But the database connection might be slow.", isSelf: false },
+        { sender: 'Asif', avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&q=80', text: "I'm thinking we can optimize that part. Just trying to figure out the best ORM for this scale.", isSelf: false },
+        { sender: 'Sumona', avatar: 'https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?auto=format&fit=crop&w=100&q=80', text: "Could we also look at deployment strategies? Vercel or AWS?", isSelf: false },
+        { sender: 'Tutor Rahim', avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80', text: "Great point, Sumona! We'll cover both options later in the session.", isSelf: false }
+      ],
+      oneOnOne: [
+        { sender: 'Arifuzzaman', avatar: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=100&q=80', text: "Hi, welcome! Are you ready to dive into the song?", isSelf: false },
+        { sender: 'You', avatar: '', text: "Yes, I'm excited! Just trying to get my chord fingering right for the first verse.", isSelf: true },
+        { sender: 'Arifuzzaman', avatar: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=100&q=80', text: "Great! Let's review the chords. C, G, Am... then we'll focus on the strumming pattern. It's a key part of the unique sound.", isSelf: false },
+        { sender: 'You', avatar: '', text: "Perfect, thank you! Let me show you what I've been practicing.", isSelf: true }
+      ]
+    };
+
+    // 5. DIRECT PRE-BOOKING MESSAGES (Matches Section 3.3.2 Nila conversation)
+    let activeChatExpertId = 2; // Default Nila Ahmed from screenshot
+    const DIRECT_THREADS = {
+      1: [
+        { from: 'user', text: 'Salam Rahim bhai, I have a bottleneck on my Next.js API route and need advice on Vercel vs AWS.', time: '3:45 PM' },
+        { from: 'expert', text: 'Wa Alaikum Assalam! Sure, we can inspect your code live in a 45-min session or you can join tonight\'s 4-person Group Pool for BDT 400.', time: '3:47 PM' }
+      ],
+      2: [
+        { from: 'user', text: "Hey Nila, just saw your portfolio, it's impressive!", time: '3:55 PM' },
+        { from: 'expert', text: "Thank you so much! Are you looking for a 1-on-1 SEO audit or keyword strategy guidance for your project?", time: '3:56 PM' }
+      ],
+      3: [
+        { from: 'user', text: 'Hi Shakib, can we review my mobile UI Figma components before my client presentation?', time: '2:15 PM' },
+        { from: 'expert', text: 'Absolutely! Book a 1-on-1 slot and share your Figma link.', time: '2:18 PM' }
+      ],
+      4: [
+        { from: 'user', text: 'Apu, need help verifying our Pro Forma Cash Flow & Break-Even chart for MGT-4104.', time: '4:10 PM' },
+        { from: 'expert', text: 'Happy to help! We will verify your contribution margin and 39-expert break-even calculation step by step.', time: '4:12 PM' }
+      ],
+      5: [
+        { from: 'user', text: 'Bhaiya, how many sessions to learn "Majhe Majhe Shunte Pai" smoothly?', time: '5:00 PM' },
+        { from: 'expert', text: 'We can nail the C - G - Am chord transitions and strumming pattern in just one 1-on-1 session!', time: '5:02 PM' }
+      ],
+      6: [
+        { from: 'user', text: 'Hi Maria, can you teach indoor interview lighting with two softboxes?', time: '1:20 PM' },
+        { from: 'expert', text: 'Yes! We can do a live video walkthrough of your room setup.', time: '1:25 PM' }
+      ]
+    };
+
+    let selectedCategory = 'All';
+    let currentClassroomMode = 'group';
+    let currentModalExpert = EXPERTS[0];
+
+    // RENDER CATEGORIES
+    function renderCategories() {
+      const grid = document.getElementById('categoryGrid');
+      grid.innerHTML = CATEGORIES.map(cat => {
+        const isActive = selectedCategory === cat.id;
+        return `
+          <button onclick="selectCategory('${cat.id}')" class="desktop-card group p-4 rounded-2xl border ${isActive ? 'border-omni-600 ring-2 ring-omni-500/30 bg-omni-50/60' : 'border-slate-200 bg-white'} hover:border-omni-500 shadow-sm transition flex flex-col items-center text-center gap-2.5 cursor-pointer">
+            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br ${cat.color} text-white flex items-center justify-center text-xl shadow-sm group-hover:scale-105 transition">
+              <i class="fa-solid ${cat.icon}"></i>
+            </div>
+            <span class="font-bold text-xs text-slate-800 desktop-title">${cat.name}</span>
+          </button>
+        `;
+      }).join('');
+    }
+
+    function selectCategory(catId) {
+      selectedCategory = (selectedCategory === catId && catId !== 'All') ? 'All' : catId;
+      renderCategories();
+      filterExperts();
+    }
+
+    function quickSearch(term) {
+      document.getElementById('marketSearchInput').value = term;
+      selectedCategory = 'All';
+      renderCategories();
+      filterExperts();
+    }
+
+    function updatePriceFilter(val) {
+      document.getElementById('priceRangeLabel').textContent = `BDT ${Number(val).toLocaleString()}`;
+      filterExperts();
+    }
+
+    // RENDER FEATURED EXPERTS GRID
+    function filterExperts() {
+      const query = document.getElementById('marketSearchInput').value.toLowerCase().trim();
+      const minRating = parseFloat(document.getElementById('ratingFilter').value || '0');
+      const maxPrice = parseInt(document.getElementById('priceRangeSlider').value || '1500', 10);
+
+      const filtered = EXPERTS.filter(exp => {
+        const matchesCat = selectedCategory === 'All' || exp.category === selectedCategory;
+        const matchesRating = exp.rating >= minRating;
+        const matchesPrice = exp.price <= maxPrice;
+        const matchesQuery = !query ||
+          exp.name.toLowerCase().includes(query) ||
+          exp.role.toLowerCase().includes(query) ||
+          exp.bio.toLowerCase().includes(query) ||
+          exp.tags.some(t => t.toLowerCase().includes(query)) ||
+          exp.expertise.some(e => e.toLowerCase().includes(query));
+        return matchesCat && matchesRating && matchesPrice && matchesQuery;
+      });
+
+      const grid = document.getElementById('expertsGrid');
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-full bg-white desktop-card rounded-2xl p-8 text-center border border-slate-200 space-y-3">
+            <div class="text-2xl">🔍</div>
+            <div class="font-bold text-slate-800 desktop-title">No exact expert match found for those filters.</div>
+            <p class="text-xs text-slate-500">Try resetting filters or publish a custom Group Learning Request so our team matches a verified expert for you!</p>
+            <button onclick="switchTab('group')" class="bg-omni-600 text-white text-xs font-bold px-4 py-2 rounded-xl cursor-pointer">Post a Learning Request</button>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = filtered.map(exp => `
+        <div class="desktop-card bg-white rounded-2xl border border-slate-200 hover:border-omni-500 p-5 shadow-sm hover:shadow-md transition flex flex-col justify-between gap-4">
+          <div class="flex items-start gap-4">
+            <div class="relative shrink-0 cursor-pointer" onclick="openExpertModal(${exp.id})">
+              <img src="${exp.avatar}" onerror="this.src='https://placehold.co/120x120/16a34a/ffffff?text=${encodeURIComponent(exp.name[0])}'" alt="${exp.name}" class="w-20 h-20 rounded-2xl object-cover border border-slate-200" />
+              <div class="mt-1 bg-slate-900 text-amber-400 text-[10px] font-bold px-2 py-0.5 rounded-md text-center">
+                ★★★★★ ${exp.rating}
+              </div>
+            </div>
+            <div class="space-y-1.5 flex-1">
+              <div class="flex items-center justify-between gap-1">
+                <h3 onclick="openExpertModal(${exp.id})" class="font-extrabold text-base text-slate-900 desktop-title hover:text-omni-600 cursor-pointer flex items-center gap-1.5">
+                  <span>${exp.name}</span>
+                  <i class="fa-solid fa-circle-check text-sky-500 text-xs" title="Verified OmniLearn Expert"></i>
+                </h3>
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full ${exp.tier === 'Professional' ? 'bg-omni-100 text-omni-800' : 'bg-slate-100 text-slate-600'}">
+                  ${exp.tier}
+                </span>
+              </div>
+              <div class="text-xs font-semibold text-omni-700">${exp.role}</div>
+              <p class="text-xs text-slate-500 desktop-subtext line-clamp-2 leading-relaxed">${exp.bio}</p>
+              <div class="flex flex-wrap gap-1 pt-1">
+                ${exp.tags.map(t => `<span class="bg-slate-100 text-slate-700 text-[10px] font-semibold px-2 py-0.5 rounded-md">${t}</span>`).join('')}
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-3 border-t border-slate-100 flex items-center justify-between gap-2">
+            <div>
+              <div class="text-[10px] text-slate-400 font-medium">Starting from</div>
+              <div class="text-sm font-extrabold text-slate-900 desktop-title">BDT ${exp.price}/session</div>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <button onclick="openExpertModal(${exp.id})" class="px-3 py-2 rounded-full border border-slate-200 hover:border-omni-500 text-xs font-bold text-slate-700 desktop-subtext transition cursor-pointer">
+                Profile & Video
+              </button>
+              <button onclick="startBooking(${exp.id})" class="bg-omni-700 hover:bg-omni-800 text-white text-xs font-bold px-4 py-2 rounded-full shadow-sm transition cursor-pointer">
+                Connect Now
+              </button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // EXPERT MODAL FUNCTIONS
+    function openExpertModal(expId) {
+      const exp = EXPERTS.find(e => e.id === expId) || EXPERTS[0];
+      currentModalExpert = exp;
+      document.getElementById('modalExpertTitle').textContent = `Expert Profile: ${exp.name}`;
+      document.getElementById('modalExpertImg').src = exp.avatar;
+      document.getElementById('modalExpertRating').textContent = `★★★★★ ${exp.rating} (${exp.reviews} verified reviews)`;
+      document.getElementById('modalExpertPrice').textContent = `BDT ${exp.price} / session`;
+
+      document.getElementById('modalQualifications').innerHTML = exp.qualifications.map(q => `<li>${q}</li>`).join('');
+      document.getElementById('modalExperience').innerHTML = exp.experience.map(x => `<li>${x}</li>`).join('');
+      document.getElementById('modalExpertise').innerHTML = exp.expertise.map(a => `<li>${a}</li>`).join('');
+      document.getElementById('modalIntroQuote').textContent = exp.introQuote;
+      document.getElementById('introVideoBox').classList.add('hidden');
+
+      document.getElementById('modalBtnMessage').onclick = () => {
+        closeExpertModal();
+        activeChatExpertId = exp.id;
+        switchTab('messages');
+        renderDirectChat();
+      };
+      document.getElementById('modalBtnBook').onclick = () => {
+        closeExpertModal();
+        startBooking(exp.id);
+      };
+
+      document.getElementById('expertProfileModal').classList.remove('hidden');
+    }
+
+    function toggleIntroVideo() {
+      const box = document.getElementById('introVideoBox');
+      box.classList.toggle('hidden');
+    }
+
+    function closeExpertModal() {
+      document.getElementById('expertProfileModal').classList.add('hidden');
+    }
+
+    function startBooking(expId) {
+      const exp = EXPERTS.find(e => e.id === expId) || EXPERTS[0];
+      activeChatExpertId = exp.id;
+      document.getElementById('bookingExpertSelect').value = exp.name;
+      document.getElementById('bookingFeeInput').value = exp.price;
+      updateCheckoutCalculation();
+      switchTab('messages');
+      renderDirectChat();
+      showToast(`Selected ${exp.name} — Ready to message or book via bKash/Nagad!`);
+    }
+
+    // GROUP LEARNING POOLS RENDER & ACTIONS
+    function renderGroupPools() {
+      const container = document.getElementById('groupPoolsContainer');
+      document.getElementById('poolCountBadge').textContent = GROUP_POOLS.length;
+
+      container.innerHTML = GROUP_POOLS.map(pool => {
+        const perStudentNow = Math.round(pool.totalFee / pool.currentLearners);
+        const perStudentFull = Math.round(pool.totalFee / pool.maxLearners);
+        const progressPct = Math.min(100, Math.round((pool.currentLearners / pool.maxLearners) * 100));
+
+        return `
+          <div class="desktop-card bg-white rounded-2xl border ${pool.joinedByUser ? 'border-2 border-omni-500' : 'border-slate-200'} p-5 shadow-sm space-y-3">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <span class="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-omni-50 text-omni-800 border border-omni-200">
+                ${pool.category}
+              </span>
+              <span class="text-xs font-bold text-slate-600 desktop-subtext">
+                Matched Expert: <strong class="text-slate-900 desktop-title">${pool.expertName}</strong> <span class="text-amber-500">★ ${pool.expertRating}</span>
+              </span>
+            </div>
+
+            <h4 class="font-extrabold text-base text-slate-900 desktop-title">${pool.topic}</h4>
+
+            <!-- Cost-Sharing Highlight Bar -->
+            <div class="grid grid-cols-3 gap-2 bg-slate-50 desktop-card p-3 rounded-xl border border-slate-200 text-center">
+              <div>
+                <div class="text-[10px] text-slate-400 uppercase font-bold">Total Expert Fee</div>
+                <div class="text-sm font-extrabold text-slate-700 desktop-title">BDT ${pool.totalFee}</div>
+              </div>
+              <div class="border-x border-slate-200">
+                <div class="text-[10px] text-omni-600 uppercase font-bold">Your Pooled Share</div>
+                <div class="text-base font-extrabold text-omni-600">BDT ${perStudentNow}</div>
+              </div>
+              <div>
+                <div class="text-[10px] text-slate-400 uppercase font-bold">At Full Pool (${pool.maxLearners})</div>
+                <div class="text-sm font-extrabold text-amber-600">BDT ${perStudentFull}/student</div>
+              </div>
+            </div>
+
+            <!-- Progress bar & participants -->
+            <div class="space-y-1.5">
+              <div class="flex justify-between text-xs font-semibold">
+                <span class="text-slate-600 desktop-subtext">
+                  <i class="fa-solid fa-user-group text-omni-600 mr-1"></i>
+                  ${pool.currentLearners} of ${pool.maxLearners} Learners Pooled (${pool.participants.join(', ')})
+                </span>
+                <span class="text-omni-700 font-bold">Save ${Math.round((1 - (1 / pool.currentLearners)) * 100)}%</span>
+              </div>
+              <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+                <div class="h-full bg-omni-500 rounded-full transition-all duration-300" style="width: ${progressPct}%"></div>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap items-center justify-between gap-2 pt-1">
+              <button onclick="toggleJoinPool(${pool.id})" class="px-4 py-2 rounded-xl font-bold text-xs transition cursor-pointer ${pool.joinedByUser ? 'bg-slate-900 text-white' : 'bg-omni-600 hover:bg-omni-700 text-white shadow-sm'}">
+                ${pool.joinedByUser ? '✓ Joined Pool (Click to Leave)' : '+ Join Pool & Split Cost'}
+              </button>
+              <button onclick="bookGroupPool(${pool.id})" class="px-3.5 py-2 rounded-xl border border-omni-600 text-omni-700 hover:bg-omni-50 font-bold text-xs transition cursor-pointer">
+                Checkout Share (BDT ${perStudentNow}) →
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function toggleJoinPool(poolId) {
+      const pool = GROUP_POOLS.find(p => p.id === poolId);
+      if (!pool) return;
+      if (pool.joinedByUser) {
+        pool.joinedByUser = false;
+        pool.currentLearners = Math.max(1, pool.currentLearners - 1);
+        pool.participants = pool.participants.filter(p => p !== 'You');
+        showToast('Left learning pool.');
+      } else {
+        if (pool.currentLearners >= pool.maxLearners) {
+          showToast('Pool is already at maximum capacity!');
+          return;
+        }
+        pool.joinedByUser = true;
+        pool.currentLearners += 1;
+        pool.participants.push('You');
+        const newShare = Math.round(pool.totalFee / pool.currentLearners);
+        showToast(`Joined Pool! Your cost share dropped to BDT ${newShare}!`);
+      }
+      renderGroupPools();
+    }
+
+    function createLearningRequest(e) {
+      e.preventDefault();
+      const cat = document.getElementById('reqCategory').value;
+      const topic = document.getElementById('reqTopic').value.trim();
+      const budget = parseInt(document.getElementById('reqBudget').value || '1600', 10);
+      const maxSize = parseInt(document.getElementById('reqGroupSize').value || '4', 10);
+
+      if (!topic) return;
+
+      const newPool = {
+        id: Date.now(),
+        category: cat,
+        topic: topic,
+        expertName: cat.includes('React') ? 'Rahim Khan' : (cat.includes('Finance') ? 'Sumona Islam' : 'Nila Ahmed'),
+        expertRating: 4.9,
+        totalFee: budget,
+        currentLearners: 1,
+        maxLearners: maxSize,
+        joinedByUser: true,
+        participants: ['You']
+      };
+
+      GROUP_POOLS.unshift(newPool);
+      renderGroupPools();
+      showToast('Published Learning Request! Other students can now join and split the fee.');
+    }
+
+    function bookGroupPool(poolId) {
+      const pool = GROUP_POOLS.find(p => p.id === poolId);
+      if (!pool) return;
+      const myShare = Math.round(pool.totalFee / pool.currentLearners);
+      document.getElementById('bookingExpertSelect').value = pool.expertName;
+      document.getElementById('bookingSessionType').value = 'group';
+      document.getElementById('bookingFeeInput').value = myShare;
+      updateCheckoutCalculation();
+      switchTab('messages');
+      showToast(`Loaded Group Share (BDT ${myShare}) for ${pool.expertName} into bKash/Nagad Checkout.`);
+    }
+
+    // LIVE CLASSROOM DEMO LOGIC (Section 3.3.1)
+    function openClassroomMode(mode) {
+      currentClassroomMode = mode;
+      switchTab('classroom');
+
+      const btnGroup = document.getElementById('btnClassGroup');
+      const btnOne = document.getElementById('btnClassOneOnOne');
+      const stageGroup = document.getElementById('stageGroup');
+      const stageOne = document.getElementById('stageOneOnOne');
+
+      if (mode === 'group') {
+        btnGroup.className = 'px-4 py-2 rounded-lg text-xs font-bold bg-omni-600 text-white shadow-sm transition cursor-pointer flex items-center gap-1.5';
+        btnOne.className = 'px-4 py-2 rounded-lg text-xs font-bold text-slate-700 hover:bg-white transition cursor-pointer flex items-center gap-1.5';
+        stageGroup.classList.remove('hidden');
+        stageOne.classList.add('hidden');
+        document.getElementById('classroomModeBadge').textContent = 'LIVE GROUP COLLABORATIVE SESSION';
+        document.getElementById('classroomTitle').textContent = 'Group: Advanced React & Next.js Collaborative Session';
+        document.getElementById('speakingIndicatorText').textContent = 'Tutor Rahim is actively speaking';
+      } else {
+        btnOne.className = 'px-4 py-2 rounded-lg text-xs font-bold bg-omni-600 text-white shadow-sm transition cursor-pointer flex items-center gap-1.5';
+        btnGroup.className = 'px-4 py-2 rounded-lg text-xs font-bold text-slate-700 hover:bg-white transition cursor-pointer flex items-center gap-1.5';
+        stageOne.classList.remove('hidden');
+        stageGroup.classList.add('hidden');
+        document.getElementById('classroomModeBadge').textContent = 'LIVE 1-ON-1 MICRO-LEARNING SESSION';
+        document.getElementById('classroomTitle').textContent = 'One-on-One: Guitar Session - Learning "Majhe Majhe Shunte Pai"';
+        document.getElementById('speakingIndicatorText').textContent = 'Arifuzzaman (Verified Guitar Expert) is listening to your chord strumming...';
+      }
+      renderClassroomChat();
+    }
+
+    function renderClassroomChat() {
+      const feed = document.getElementById('classroomChatFeed');
+      const messages = CLASSROOM_CHATS[currentClassroomMode] || [];
+
+      feed.innerHTML = messages.map(msg => {
+        if (msg.isSelf) {
+          return `
+            <div class="flex justify-end">
+              <div class="bg-omni-500 text-zinc-950 font-medium text-xs px-3.5 py-2.5 rounded-2xl rounded-br-sm max-w-[82%] shadow">
+                ${msg.text}
+              </div>
+            </div>
+          `;
+        }
+        return `
+          <div class="flex items-start gap-2.5">
+            <img src="${msg.avatar}" onerror="this.src='https://placehold.co/60x60/16a34a/ffffff?text=U'" class="w-7 h-7 rounded-full object-cover shrink-0 mt-0.5" alt="${msg.sender}" />
+            <div class="bg-zinc-800 text-zinc-100 text-xs px-3.5 py-2.5 rounded-2xl rounded-tl-sm max-w-[85%]">
+              ${msg.text}
+            </div>
+          </div>
+        `;
+      }).join('');
+      feed.scrollTop = feed.scrollHeight;
+    }
+
+    function sendClassroomMessage(e) {
+      e.preventDefault();
+      const input = document.getElementById('classroomChatInput');
+      const text = input.value.trim();
+      if (!text) return;
+
+      CLASSROOM_CHATS[currentClassroomMode].push({
+        sender: 'You',
+        avatar: '',
+        text: text,
+        isSelf: true
+      });
+      input.value = '';
+      renderClassroomChat();
+
+      // Simulated expert real-time response
+      setTimeout(() => {
+        const reply = currentClassroomMode === 'group'
+          ? 'Tutor Rahim: Spot on! Notice how pooling database connections inside a singleton solves that cold-start latency on Vercel.'
+          : 'Arifuzzaman: Clean transition from C to G! Keep your wrist relaxed on the down-up strumming pattern.';
+        const avatar = currentClassroomMode === 'group'
+          ? 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80'
+          : 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=100&q=80';
+        CLASSROOM_CHATS[currentClassroomMode].push({
+          sender: 'Expert',
+          avatar: avatar,
+          text: reply,
+          isSelf: false
+        });
+        renderClassroomChat();
+      }, 900);
+    }
+
+    function toggleMic() {
+      const icon = document.getElementById('iconMic');
+      const btn = document.getElementById('btnMuteMic');
+      if (icon.classList.contains('fa-microphone-slash')) {
+        icon.classList.replace('fa-microphone-slash', 'fa-microphone');
+        btn.classList.replace('bg-zinc-800', 'bg-omni-600');
+        showToast('Microphone Unmuted');
+      } else {
+        icon.classList.replace('fa-microphone', 'fa-microphone-slash');
+        btn.classList.replace('bg-omni-600', 'bg-zinc-800');
+        showToast('Microphone Muted');
+      }
+    }
+
+    function toggleCam() {
+      const icon = document.getElementById('iconCam');
+      if (icon.classList.contains('fa-video')) {
+        icon.classList.replace('fa-video', 'fa-video-slash');
+        showToast('Camera Paused');
+      } else {
+        icon.classList.replace('fa-video-slash', 'fa-video');
+        showToast('Camera Active');
+      }
+    }
+
+    // DIRECT MESSAGING & CHECKOUT LOGIC (Tab 4)
+    function renderDirectChat() {
+      const selector = document.getElementById('chatExpertSelector');
+      selector.innerHTML = EXPERTS.map(exp => {
+        const active = exp.id === activeChatExpertId;
+        return `
+          <button onclick="selectChatExpert(${exp.id})" class="p-2 rounded-xl border text-left flex items-center gap-2 transition cursor-pointer ${active ? 'bg-omni-950 border-omni-400 text-white' : 'bg-zinc-900 border-zinc-800 text-zinc-300 hover:border-zinc-700'}">
+            <img src="${exp.avatar}" class="w-8 h-8 rounded-full object-cover shrink-0" alt="${exp.name}" />
+            <div class="overflow-hidden">
+              <div class="font-bold text-xs truncate">${exp.name.split(' ')[0]}</div>
+              <div class="text-[10px] text-amber-400">★ ${exp.rating}</div>
+            </div>
+          </button>
+        `;
+      }).join('');
+
+      const messages = DIRECT_THREADS[activeChatExpertId] || [];
+      const exp = EXPERTS.find(e => e.id === activeChatExpertId) || EXPERTS[0];
+      const box = document.getElementById('directChatMessages');
+
+      box.innerHTML = messages.map(m => {
+        if (m.from === 'user') {
+          return `
+            <div class="flex flex-col items-end">
+              <div class="bg-omni-500 text-zinc-950 font-semibold text-xs px-3.5 py-2.5 rounded-2xl rounded-br-sm max-w-[80%]">
+                ${m.text}
+              </div>
+              <span class="text-[10px] text-zinc-500 mt-0.5">${m.time}</span>
+            </div>
+          `;
+        }
+        return `
+          <div class="flex items-start gap-2">
+            <img src="${exp.avatar}" class="w-7 h-7 rounded-full object-cover mt-1" alt="${exp.name}" />
+            <div>
+              <div class="bg-zinc-800 text-zinc-100 text-xs px-3.5 py-2.5 rounded-2xl rounded-tl-sm max-w-[85%]">
+                ${m.text}
+              </div>
+              <span class="text-[10px] text-zinc-500 mt-0.5 block">${exp.name} • ${m.time}</span>
+            </div>
+          </div>
+        `;
+      }).join('');
+      box.scrollTop = box.scrollHeight;
+    }
+
+    function selectChatExpert(id) {
+      activeChatExpertId = id;
+      const exp = EXPERTS.find(e => e.id === id);
+      if (exp) {
+        document.getElementById('bookingExpertSelect').value = exp.name;
+        document.getElementById('bookingFeeInput').value = exp.price;
+        updateCheckoutCalculation();
+      }
+      renderDirectChat();
+    }
+
+    function sendDirectMessage(e) {
+      e.preventDefault();
+      const input = document.getElementById('directChatInput');
+      const txt = input.value.trim();
+      if (!txt) return;
+
+      if (!DIRECT_THREADS[activeChatExpertId]) DIRECT_THREADS[activeChatExpertId] = [];
+      DIRECT_THREADS[activeChatExpertId].push({ from: 'user', text: txt, time: 'Just now' });
+      input.value = '';
+      renderDirectChat();
+
+      setTimeout(() => {
+        const exp = EXPERTS.find(e => e.id === activeChatExpertId);
+        DIRECT_THREADS[activeChatExpertId].push({
+          from: 'expert',
+          text: `Sounds great! Let's lock in the session for BDT ${exp.price} via bKash/Nagad on the right panel so we can start on OmniLearn Live Classroom.`,
+          time: 'Just now'
+        });
+        renderDirectChat();
+      }, 700);
+    }
+
+    function updateCheckoutCalculation() {
+      const fee = Math.max(100, parseInt(document.getElementById('bookingFeeInput').value || '1000', 10));
+      const commission = Math.round(fee * 0.15);
+      const expertPayout = fee - commission;
+      const netContrib = commission - 30; // BDT 30 variable cost per session
+
+      document.getElementById('calcGrossFee').textContent = `BDT ${fee.toLocaleString()}`;
+      document.getElementById('calcExpertPayout').textContent = `BDT ${expertPayout.toLocaleString()}`;
+      document.getElementById('calcCommission').textContent = `BDT ${commission.toLocaleString()}`;
+      document.getElementById('calcNetContribution').textContent = `BDT ${netContrib.toLocaleString()}`;
+    }
+
+    function openMfsPaymentModal(provider) {
+      const fee = parseInt(document.getElementById('bookingFeeInput').value || '1000', 10);
+      const header = document.getElementById('mfsHeader');
+      const confirmBtn = document.getElementById('mfsConfirmBtn');
+      document.getElementById('mfsTitle').textContent = `${provider} Secure Checkout`;
+      document.getElementById('mfsAmountBadge').textContent = `BDT ${fee.toLocaleString()}`;
+
+      if (provider === 'Nagad') {
+        header.className = 'bg-[#f7941d] text-white p-5 flex items-center justify-between';
+        confirmBtn.className = 'w-2/3 py-2.5 rounded-xl bg-[#f7941d] text-white font-extrabold text-xs shadow-md cursor-pointer';
+      } else {
+        header.className = 'bg-[#e2136e] text-white p-5 flex items-center justify-between';
+        confirmBtn.className = 'w-2/3 py-2.5 rounded-xl bg-[#e2136e] text-white font-extrabold text-xs shadow-md cursor-pointer';
+      }
+      document.getElementById('mfsPaymentModal').classList.remove('hidden');
+    }
+
+    function closeMfsModal() {
+      document.getElementById('mfsPaymentModal').classList.add('hidden');
+    }
+
+    function completeMfsPayment(e) {
+      e.preventDefault();
+      closeMfsModal();
+      const expName = document.getElementById('bookingExpertSelect').value;
+      const fee = document.getElementById('bookingFeeInput').value;
+      showToast(`Payment of BDT ${fee} confirmed! Launching Live Classroom with ${expName}...`);
+      setTimeout(() => {
+        if (expName.includes('Arifuzzaman')) {
+          openClassroomMode('oneOnOne');
+        } else {
+          openClassroomMode('group');
+        }
+      }, 1100);
+    }
+
+    // EXPERT SUBSCRIPTION & ONBOARDING (Tab 5)
+    function activateSubscription(planName) {
+      showToast(`Activated ${planName}! Welcome to the OmniLearn Verified Expert Network.`);
+    }
+
+    function submitExpertApplication() {
+      const name = document.getElementById('expNameInput').value.trim() || 'New Expert';
+      const skill = document.getElementById('expSkillInput').value.trim() || 'Specialized Micro-Skill';
+      const statusBox = document.getElementById('expertAppStatus');
+      statusBox.textContent = `✓ ${name} (${skill}) submitted for verification! Your 15-Day Free Trial is now active.`;
+      statusBox.classList.remove('hidden');
+      showToast(`Expert application received for ${name}!`);
+    }
+
+    // BUSINESS ECONOMICS & BREAK-EVEN SIMULATOR (Tab 6 - Section 5.6 & 11)
+    function setEconScenario(experts, sessions) {
+      document.getElementById('sliderExperts').value = experts;
+      document.getElementById('sliderSessions').value = sessions;
+      updateEconomicsSimulator();
+    }
+
+    function updateEconomicsSimulator() {
+      const experts = parseInt(document.getElementById('sliderExperts').value, 10);
+      const sessions = parseInt(document.getElementById('sliderSessions').value, 10);
+
+      document.getElementById('lblSimExperts').textContent = `${experts} Paying Experts`;
+      document.getElementById('lblSimSessions').textContent = `${sessions} Sessions / mo`;
+
+      const subRev = experts * 300; // BDT 300 avg monthly subscription
+      const commRev = experts * sessions * 150; // BDT 150 (15% of BDT 1,000)
+      const totalRev = subRev + commRev;
+      const varCost = experts * sessions * 30; // BDT 30 variable cost per session
+      const contribution = totalRev - varCost;
+      const contribPerExpert = 300 + (sessions * 120);
+      const fixedCost = 30000;
+      const netProfit = contribution - fixedCost;
+
+      document.getElementById('simSubRev').textContent = `BDT ${subRev.toLocaleString()}`;
+      document.getElementById('simCommRev').textContent = `BDT ${commRev.toLocaleString()}`;
+      document.getElementById('simTotalRev').textContent = `BDT ${totalRev.toLocaleString()}`;
+      document.getElementById('simVarCost').textContent = `- BDT ${varCost.toLocaleString()}`;
+      document.getElementById('simContribPerExp').textContent = `BDT ${contribPerExpert.toLocaleString()}`;
+      document.getElementById('simContribution').textContent = `BDT ${contribution.toLocaleString()}`;
+
+      const profitEl = document.getElementById('simNetProfit');
+      if (netProfit >= 0) {
+        profitEl.textContent = `+ BDT ${netProfit.toLocaleString()} (Profit)`;
+        profitEl.className = 'text-omni-600 font-extrabold';
+      } else {
+        profitEl.textContent = `- BDT ${Math.abs(netProfit).toLocaleString()} (Loss)`;
+        profitEl.className = 'text-rose-600 font-extrabold';
+      }
+
+      // Update live marker on Break-Even SVG (scaled to 0..120 experts on X-axis [65..590], 0..120,000 BDT on Y-axis [270..20])
+      const clampedExp = Math.min(120, experts);
+      const cx = 65 + (clampedExp / 120) * 525;
+      const revAtClamped = clampedExp * (300 + sessions * 150);
+      const cy = Math.max(20, 270 - (revAtClamped / 120000) * 250);
+      const marker = document.getElementById('svgCurrentMarker');
+      if (marker) {
+        marker.setAttribute('cx', cx.toFixed(1));
+        marker.setAttribute('cy', cy.toFixed(1));
+      }
+    }
+
+    // REVIEW & HOSTING MODALS
+    function openReviewModal() {
+      document.getElementById('reviewModal').classList.remove('hidden');
+    }
+    function closeReviewModal() {
+      document.getElementById('reviewModal').classList.add('hidden');
+    }
+    function submitReview() {
+      closeReviewModal();
+      showToast('★★★★★ Verified review published! Escrow payout (85%) released to Expert.');
+    }
+
+    function openHostingModal() {
+      document.getElementById('hostingModal').classList.remove('hidden');
+    }
+    function closeHostingModal() {
+      document.getElementById('hostingModal').classList.add('hidden');
+    }
+
+    // NAVIGATION & VIEWPORT MODE SWITCHER
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-view').forEach(el => el.classList.add('hidden'));
+      const target = document.getElementById(`view-${tabId}`);
+      if (target) target.classList.remove('hidden');
+
+      document.querySelectorAll('.nav-tab-btn').forEach(btn => {
+        btn.className = 'nav-tab-btn px-3.5 py-2 rounded-xl whitespace-nowrap flex items-center gap-2 text-slate-600 hover:bg-slate-100 transition cursor-pointer';
+      });
+      const activeBtn = document.getElementById(`tabBtn-${tabId}`);
+      if (activeBtn) {
+        activeBtn.className = 'nav-tab-btn px-3.5 py-2 rounded-xl whitespace-nowrap flex items-center gap-2 bg-omni-600 text-white shadow-sm transition cursor-pointer';
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function setViewportMode(mode) {
+      const container = document.getElementById('viewportContainer');
+      const statusBar = document.getElementById('mobileStatusBar');
+      const btnDesktop = document.getElementById('btnDesktopMode');
+      const btnMobile = document.getElementById('btnMobileMode');
+
+      if (mode === 'mobile') {
+        container.classList.add('mobile-frame-active');
+        statusBar.classList.remove('hidden');
+        btnMobile.className = 'px-3 py-1.5 rounded-lg bg-omni-600 text-white shadow-sm flex items-center gap-1.5 transition cursor-pointer';
+        btnDesktop.className = 'px-3 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 flex items-center gap-1.5 transition cursor-pointer';
+        showToast('Switched to Paper Dark/Emerald Mobile App Frame!');
+      } else {
+        container.classList.remove('mobile-frame-active');
+        statusBar.classList.add('hidden');
+        btnDesktop.className = 'px-3 py-1.5 rounded-lg bg-white text-slate-900 shadow-sm flex items-center gap-1.5 transition cursor-pointer';
+        btnMobile.className = 'px-3 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 flex items-center gap-1.5 transition cursor-pointer';
+        showToast('Switched to Full Web Marketplace View');
+      }
+    }
+
+    function showToast(msg) {
+      const banner = document.getElementById('toastBanner');
+      document.getElementById('toastText').textContent = msg;
+      banner.classList.remove('hidden');
+      clearTimeout(window._toastTimer);
+      window._toastTimer = setTimeout(() => {
+        banner.classList.add('hidden');
+      }, 3600);
+    }
+
+    // INITIALIZE ON LOAD
+    window.onload = function () {
+      renderCategories();
+      filterExperts();
+      renderGroupPools();
+      renderClassroomChat();
+      renderDirectChat();
+      updateCheckoutCalculation();
+      updateEconomicsSimulator();
+    };
+  </script>
+</body>
+</html>
